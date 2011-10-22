@@ -9,203 +9,203 @@
 	    </ul>
 	  <% end %>
 	</div>
-	<%= form_for @appointment, :html => { :class => "bp" } do |f| %>
-		<div class="user_info">
-			<fieldset>
-				<legend>Contact Information</legend>
-				<p class="required">
-					<%= f.label :first_name %><br />
-					<%= f.text_field :first_name %>
-				</p>
-				<p class="required">
-				  <%= f.label :last_name %><br />
-				  <%= f.text_field :last_name %>
-				</p>
-				<p class="required">
-				  <%= f.label :phone %><br />
-				  <%= f.text_field :phone %><br />
-				  <span class="notes">e.g., (616) 555-5555</span>
-				</p>
-				<p class="required">
-				  <%= f.label :best_time_to_contact_client, "What is the best time to contact you between 9am and 4pm?" %><br />
-				  <%= f.text_field :best_time_to_contact_client %>
-				</p>
-				<p class="required">
-				  <%= f.label :alternate_phone %><br />
-				  <%= f.text_field :alternate_phone %><br />
-				  <span class="notes">e.g., (616) 555-5555</span>
-				</p>
-				<p class="required">
-				  <%= f.label :email %><br />
-				  <%= f.text_field :email %>
-				</p>
-			</fieldset>
-		</div>
-		<div class="address_container">
-			<fieldset>
-				<legend>Address</legend>
-				<p class="required">
-				  <%= f.label :street, "Street Address" %><br />
-				  <%= f.text_field :street %>
-				</p>
-				<p class="required">
-				  <%= f.label :city %><br />
-				  <%= f.text_field :city %>
-				</p>
-				<p class="required">
-				  <%= f.label :postal_code, "Zipcode" %><br />
-				  <%= f.text_field :postal_code %>
-				</p>
-				<p class="required">
-				  <%= f.label :county %><br />
-				  <%= f.text_field :county %>
-				</p>
-			</fieldset>
-		</div>
-		<div class="pet_information clear">
-			<fieldset>
-				<legend>Basic Pet Information</legend>
-				<p class="required">
-				  <%= f.label :pet_name %><br />
-				  <%= f.text_field :pet_name %>
-				</p>
-				<p class="required">
-				  <%= label_tag "Your pet is a" %><br />
-				  <%= f.radio_button :pet_type, :dog %>
-				  <%= f.label :pet_type, "Dog", :value => :dog %><br />
-				  <%= f.radio_button :pet_type, :cat %>
-				  <%= f.label :pet_type, "Cat", :value => :cat %>
-				</p>
-				<p class="required">
-				  <%= f.label :gender %><br />
-				  <%= f.text_field :gender %>
-				</p>
-				<p class="dog_only">
-				  <%= f.label :weight, "Approximate weight of your dog" %><br />
-				  <%= f.text_field :weight %><br />
-				</p>
-				<p class="dog_only">
-				  <%= f.label :breed %><br />
-				  <%= f.text_field :breed %>
-				</p>
-				<p class="required">
-				  <%= f.label :color %><br />
-				  <%= f.text_field :color %>
-				</p>
-				<p class="required">
-				  <%= f.check_box :want_chip_implant %>
-				  <%= f.label :want_chip_implant, "Would you like a chip implant?" %>
-				</p>
-				<p class="required">
-				  <%= f.label :date_of_birth %><br />
-				  <%= f.text_field :date_of_birth %>
-				</p>
-				<p class="required">
-				  <%= f.check_box :want_rabies_vaccination %>
-				  <%= f.label :want_rabies_vaccination, "If your pet is 16 weeks or older would you like a rabies vaccination?" %>
-				</p>
-				<p class="required">
-				  <%= f.label :comments, "Please list any other information you have:" %><br />
-				  <%= f.text_area :comments, :size => "48x6" %>
-				</p>
-			</fieldset>
-		</div>
-		<div class="pet_history">
-			<fieldset>
-				<legend>Pet History</legend>
-				<p class="required">
-				  <%= f.label :acquired_from_type %><br />
-				  <%= f.radio_button :acquired_from_type, :stray %>
-				  <%= f.label :acquired_from_type, "Stray", :value => :stray %><br />
-				  <%= f.radio_button :acquired_from_type, :adopted %>
-				  <%= f.label :acquired_from_type, "Adopted", :value => :adopted %><br />
-				  <%= f.radio_button :acquired_from_type, :friend %>
-				  <%= f.label :acquired_from_type, "Friend", :value => :friend %><br />
-				  <%= f.radio_button :acquired_from_type, :breeder %>
-				  <%= f.label :acquired_from_type, "Breeder", :value => :breeder %><br />
-				  <%= f.radio_button :acquired_from_type, :other %>
-				  <%= f.label :acquired_from_type, "Other", :value => :other %><br />
-				  <span style="margin-left: 20px">
-				    <%= f.text_field :acquired_from_other_description %>
-				  </span>
-				</p>
-				<p class="required">
-				  <%= f.label :owned_for, "How long have you owned your pet?" %><br />
-				  <%= f.text_field :owned_for %><br />
-					<span class="notes">e.g., 1 year, about 18 months</span>
-				</p>
-				<p class="required">
-				  <%= f.label :pet_vaccinated, "Has your pet been vaccinated?" %><br />
-				  <%= f.radio_button :pet_vaccinated, :yes %>
-				  <%= f.label :pet_vaccinated, "Yes", :value => :yes %><br />
-				  <%= f.radio_button :pet_vaccinated, :no %>
-				  <%= f.label :pet_vaccinated, "No", :value => :no %><br />
-				  <%= f.radio_button :pet_vaccinated, :not_sure %>
-				  <%= f.label :pet_vaccinated, "Not sure", :value => :not_sure %><br />
-				</p>
-				<p class="required">
-				  <%= f.label :vet_name, "Veterinarian's Name" %><br />
-				  <%= f.text_field :vet_name %>
-				</p>
-				<p class="required">
-				  <%= f.label :surgeries_explanation, "Any previous surgery, including declawing? If so, please explain:" %><br />
-				  <%= f.text_area :surgeries_explanation, :size => "48x6"  %><br />
-				</p>
-				<p class="required">
-				  <%= f.label :health_concerns_explanation, "Any health issues? If so, please explain:" %><br />
-				  <%= f.text_area :health_concerns_explanation, :size => "48x6"  %>
-				</p>
-				<p class="required">
-				  <%= f.label :medications_explanation, "Any medications? If so, please explain:" %><br />
-				  <%= f.text_field :medications_explanation %>
-				</p>
-				<p class="required">
-				  <%= f.label :pet_in_heat, "Is your pet in heat?" %><br />
-				  <%= f.radio_button :pet_in_heat, :yes %>
-				  <%= f.label :pet_in_heat, "Yes", :value => "Yes" %><br />
-				  <%= f.radio_button :pet_in_heat, :no %>
-				  <%= f.label :pet_in_heat, "No", :value => :no %><br />
-				  <%= f.radio_button :pet_in_heat, :not_sure %>
-				  <%= f.label :pet_in_heat, "Not sure", :value => :not_sure %>
-				</p>
-				<p class="required">
-				  <%= f.label :pet_pregnant, "Is your pet pregnant?" %><br />
-				  <%= f.radio_button :pet_pregnant, :yes %>
-				  <%= f.label :pet_pregnant, "Yes", :value => :yes %><br />
-				  <%= f.radio_button :pet_pregnant, :no %>
-				  <%= f.label :pet_pregnant, "No", :value => :no %><br />
-				  <%= f.radio_button :pet_pregnant, :not_sure %>
-				  <%= f.label :pet_pregnant, "Not sure", :value => :not_sure %>
-				</p>
-				<p class="required">
-				  <%= f.label :had_litter_when, "Has your pet had a litter? If so, when?" %><br />
-				  <%= f.text_field :had_litter_when %>
-				</p>
-				<p class="required">
-				  <%= f.label :pet_testicles_descended, "Has your male pet's testicles decended?" %><br />
-				  <%= f.radio_button :pet_testicles_descended, :yes %>
-				  <%= f.label :pet_testicles_descended, "Yes", :value => :yes %><br />
-				  <%= f.radio_button :pet_testicles_descended, :no %>
-				  <%= f.label :pet_testicles_descended, "No", :value => :no %><br />
-				  <%= f.radio_button :pet_testicles_descended, :not_sure %>
-				  <%= f.label :pet_testicles_descended, "Not sure", :value => :not_sure %>
-				</p>
-				<p class="required">
-				  <%= f.label :testicle_count, "If so, how many?" %><br />
-				  <%= f.radio_button :testicle_count, 1 %>
-				  <%= f.label :testicle_count, "One (1)", :value => 1 %><br />
-				  <%= f.radio_button :testicle_count, 2 %>
-				  <%= f.label :testicle_count, "Two (2)", :value => 2 %>
-				</p>
-			</fieldset>
-		</div>
-		<div class="finished">
-			<fieldset>
-				<%= f.submit "I'm Done, send the request to C-SNIP" %>
-			</fieldset>
-		</div>
-	<% end %>
 </div>
+	<%= form_for @appointment, :html => { :class => "bp" } do |f| %>
+	<div class="user_info">
+		<fieldset>
+			<legend>Contact Information</legend>
+			<p class="required">
+				<%= f.label :first_name %><br />
+				<%= f.text_field :first_name %>
+			</p>
+			<p class="required">
+			  <%= f.label :last_name %><br />
+			  <%= f.text_field :last_name %>
+			</p>
+			<p class="required">
+			  <%= f.label :phone %><br />
+			  <%= f.text_field :phone %><br />
+			  <span class="notes">e.g., (616) 555-5555</span>
+			</p>
+			<p class="required">
+			  <%= f.label :best_time_to_contact_client, "What is the best time to contact you between 9am and 4pm?" %><br />
+			  <%= f.text_field :best_time_to_contact_client %>
+			</p>
+			<p class="required">
+			  <%= f.label :alternate_phone %><br />
+			  <%= f.text_field :alternate_phone %><br />
+			  <span class="notes">e.g., (616) 555-5555</span>
+			</p>
+			<p class="required">
+			  <%= f.label :email %><br />
+			  <%= f.text_field :email %>
+			</p>
+		</fieldset>
+	</div>
+	<div class="address_container">
+		<fieldset>
+			<legend>Address</legend>
+			<p class="required">
+			  <%= f.label :street, "Street Address" %><br />
+			  <%= f.text_field :street %>
+			</p>
+			<p class="required">
+			  <%= f.label :city %><br />
+			  <%= f.text_field :city %>
+			</p>
+			<p class="required">
+			  <%= f.label :postal_code, "Zipcode" %><br />
+			  <%= f.text_field :postal_code %>
+			</p>
+			<p class="required">
+			  <%= f.label :county %><br />
+			  <%= f.text_field :county %>
+			</p>
+		</fieldset>
+	</div>
+	<div class="pet_information clear">
+		<fieldset>
+			<legend>Basic Pet Information</legend>
+			<p class="required">
+			  <%= f.label :pet_name %><br />
+			  <%= f.text_field :pet_name %>
+			</p>
+			<p class="required">
+			  <%= label_tag "Your pet is a" %><br />
+			  <%= f.radio_button :pet_type, :dog %>
+			  <%= f.label :pet_type, "Dog", :value => :dog %><br />
+			  <%= f.radio_button :pet_type, :cat %>
+			  <%= f.label :pet_type, "Cat", :value => :cat %>
+			</p>
+			<p class="required">
+			  <%= f.label :gender %><br />
+			  <%= f.text_field :gender %>
+			</p>
+			<p class="dog_only">
+			  <%= f.label :weight, "Approximate weight of your dog" %><br />
+			  <%= f.text_field :weight %><br />
+			</p>
+			<p class="dog_only">
+			  <%= f.label :breed %><br />
+			  <%= f.text_field :breed %>
+			</p>
+			<p class="required">
+			  <%= f.label :color %><br />
+			  <%= f.text_field :color %>
+			</p>
+			<p class="required">
+			  <%= f.check_box :want_chip_implant %>
+			  <%= f.label :want_chip_implant, "Would you like a chip implant?" %>
+			</p>
+			<p class="required">
+			  <%= f.label :date_of_birth %><br />
+			  <%= f.text_field :date_of_birth %>
+			</p>
+			<p class="required">
+			  <%= f.check_box :want_rabies_vaccination %>
+			  <%= f.label :want_rabies_vaccination, "If your pet is 16 weeks or older would you like a rabies vaccination?" %>
+			</p>
+			<p class="required">
+			  <%= f.label :comments, "Please list any other information you have:" %><br />
+			  <%= f.text_area :comments, :size => "48x6" %>
+			</p>
+		</fieldset>
+	</div>
+	<div class="pet_history">
+		<fieldset>
+			<legend>Pet History</legend>
+			<p class="required">
+			  <%= f.label :acquired_from_type %><br />
+			  <%= f.radio_button :acquired_from_type, :stray %>
+			  <%= f.label :acquired_from_type, "Stray", :value => :stray %><br />
+			  <%= f.radio_button :acquired_from_type, :adopted %>
+			  <%= f.label :acquired_from_type, "Adopted", :value => :adopted %><br />
+			  <%= f.radio_button :acquired_from_type, :friend %>
+			  <%= f.label :acquired_from_type, "Friend", :value => :friend %><br />
+			  <%= f.radio_button :acquired_from_type, :breeder %>
+			  <%= f.label :acquired_from_type, "Breeder", :value => :breeder %><br />
+			  <%= f.radio_button :acquired_from_type, :other %>
+			  <%= f.label :acquired_from_type, "Other", :value => :other %><br />
+			  <span style="margin-left: 20px">
+			    <%= f.text_field :acquired_from_other_description %>
+			  </span>
+			</p>
+			<p class="required">
+			  <%= f.label :owned_for, "How long have you owned your pet?" %><br />
+			  <%= f.text_field :owned_for %><br />
+				<span class="notes">e.g., 1 year, about 18 months</span>
+			</p>
+			<p class="required">
+			  <%= f.label :pet_vaccinated, "Has your pet been vaccinated?" %><br />
+			  <%= f.radio_button :pet_vaccinated, :yes %>
+			  <%= f.label :pet_vaccinated, "Yes", :value => :yes %><br />
+			  <%= f.radio_button :pet_vaccinated, :no %>
+			  <%= f.label :pet_vaccinated, "No", :value => :no %><br />
+			  <%= f.radio_button :pet_vaccinated, :not_sure %>
+			  <%= f.label :pet_vaccinated, "Not sure", :value => :not_sure %><br />
+			</p>
+			<p class="required">
+			  <%= f.label :vet_name, "Veterinarian's Name" %><br />
+			  <%= f.text_field :vet_name %>
+			</p>
+			<p class="required">
+			  <%= f.label :surgeries_explanation, "Any previous surgery, including declawing? If so, please explain:" %><br />
+			  <%= f.text_area :surgeries_explanation, :size => "48x6"  %><br />
+			</p>
+			<p class="required">
+			  <%= f.label :health_concerns_explanation, "Any health issues? If so, please explain:" %><br />
+			  <%= f.text_area :health_concerns_explanation, :size => "48x6"  %>
+			</p>
+			<p class="required">
+			  <%= f.label :medications_explanation, "Any medications? If so, please explain:" %><br />
+			  <%= f.text_field :medications_explanation %>
+			</p>
+			<p class="required">
+			  <%= f.label :pet_in_heat, "Is your pet in heat?" %><br />
+			  <%= f.radio_button :pet_in_heat, :yes %>
+			  <%= f.label :pet_in_heat, "Yes", :value => "Yes" %><br />
+			  <%= f.radio_button :pet_in_heat, :no %>
+			  <%= f.label :pet_in_heat, "No", :value => :no %><br />
+			  <%= f.radio_button :pet_in_heat, :not_sure %>
+			  <%= f.label :pet_in_heat, "Not sure", :value => :not_sure %>
+			</p>
+			<p class="required">
+			  <%= f.label :pet_pregnant, "Is your pet pregnant?" %><br />
+			  <%= f.radio_button :pet_pregnant, :yes %>
+			  <%= f.label :pet_pregnant, "Yes", :value => :yes %><br />
+			  <%= f.radio_button :pet_pregnant, :no %>
+			  <%= f.label :pet_pregnant, "No", :value => :no %><br />
+			  <%= f.radio_button :pet_pregnant, :not_sure %>
+			  <%= f.label :pet_pregnant, "Not sure", :value => :not_sure %>
+			</p>
+			<p class="required">
+			  <%= f.label :had_litter_when, "Has your pet had a litter? If so, when?" %><br />
+			  <%= f.text_field :had_litter_when %>
+			</p>
+			<p class="required">
+			  <%= f.label :pet_testicles_descended, "Has your male pet's testicles decended?" %><br />
+			  <%= f.radio_button :pet_testicles_descended, :yes %>
+			  <%= f.label :pet_testicles_descended, "Yes", :value => :yes %><br />
+			  <%= f.radio_button :pet_testicles_descended, :no %>
+			  <%= f.label :pet_testicles_descended, "No", :value => :no %><br />
+			  <%= f.radio_button :pet_testicles_descended, :not_sure %>
+			  <%= f.label :pet_testicles_descended, "Not sure", :value => :not_sure %>
+			</p>
+			<p class="required">
+			  <%= f.label :testicle_count, "If so, how many?" %><br />
+			  <%= f.radio_button :testicle_count, 1 %>
+			  <%= f.label :testicle_count, "One (1)", :value => 1 %><br />
+			  <%= f.radio_button :testicle_count, 2 %>
+			  <%= f.label :testicle_count, "Two (2)", :value => 2 %>
+			</p>
+		</fieldset>
+	</div>
+	<div class="finished">
+		<fieldset>
+			<%= f.submit "I'm Done, send the request to C-SNIP" %>
+		</fieldset>
+	</div>
+<% end %>
 <script type="text/javascript">
   $(function() {
     $("#appointment_phone").mask("(999) 999-9999");
