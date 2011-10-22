@@ -2,6 +2,7 @@
 	<h1>Request an Appointment for your Pet</h1>
 	<div class="errorExplanationContainer">
 	  <% if @appointment.errors.any? %>
+	    <h2><%= pluralize(@appointment.errors.count, "error") %> need to fixed before this appointment is submitted:</h2>
 	    <ul>
 		  <% @appointment.errors.full_messages.each do |msg| %>
 		    <li class="error"><%= msg %></li>
