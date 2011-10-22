@@ -1,0 +1,140 @@
+<h2>Appointment - ID:<%= appointment.id}</h2>
+<div id="admin_nav" style="padding-left: 10px;">
+  <%= link_to '&larr; Back to Appointment Listing', appointments_url %>
+</div>
+<table class="single_record" cellpadding="1" width="100%">
+  <tbody>
+    <tr>
+      <th width="50%">Request created on</th>
+      <td width="50%"><%= appointment.created_at.to_s(:mdytz) %></td>
+    </tr>
+    <tr>
+      <th>Client name</th>
+      <td><%= appointment.client_name_last_comma_first %></td>
+    </tr>
+    <tr>
+      <th>Phone</th>
+      <td><%= formatted_phone(appointment.phone) %></td>
+    </tr>
+    <tr>
+      <th>What is the best time to contact you?</th>
+      <td><%= appointment.best_time_to_contact_client %></td>
+    </tr>
+    <tr>
+      <th>Alternate phone</th>
+      <td><%= formatted_phone(appointment.alternate_phone) %></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><%= mail_to(h(appointment.email)) unless appointment.email.blank? %></td>
+    </tr>
+    <tr>
+      <th>Street address</th>
+      <td><%= appointment.street %></td>
+    </tr>
+    <tr>
+      <th>City</th>
+      <td><%= appointment.city %></td>
+    </tr>
+    <tr>
+      <th>Zipcode</th>
+      <td><%= appointment.postal_code %></td>
+    </tr>
+    <tr>
+      <th>County</th>
+      <td><%= appointment.county %></td>
+    </tr>
+    <tr>
+      <th>Pet name</th>
+      <td><%= appointment.pet_name %></td>
+    </tr>
+    <tr
+      <th> Pet type
+      <td><%= appointment.pet_type.capitalize %></td>
+    </tr>
+    <tr>
+      <th>Sex</th>
+      <td><%= appointment.gender.humanize %></td>
+    </tr>
+    <tr>
+      <th>Age</th>
+      <td><%= appointment.age %></td>
+    </tr>
+    <tr>
+      <th>Weight</th>
+      <td><%= appointment.weight %></td>
+    </tr>
+    <tr>
+      <th>Date of birth</th>
+      <td><%= appointment.date_of_birth %></td>
+    </tr>
+    <tr>
+      <th>Breed</th>
+      <td><%= appointment.breed %></td>
+    </tr>
+    <tr>
+      <th>Color</th>
+      <td><%= appointment.color %></td>
+    </tr>
+    <tr>
+      <th>Would you like a chip implant?</th>
+      <td><%= formatted_boolean(appointment.want_chip_implant?) %></td>
+    </tr>
+    <tr>
+      <th>Would you like a rabies vaccination?</th>
+      <td><%= formatted_boolean(appointment.want_rabies_vaccination?) %></td>
+    </tr>
+    <tr>
+      <th>Additional information</th>
+      <td><%= appointment.comments %></td>
+    </tr>
+    <tr>
+      <th>Is your pet in heat?</th>
+      <td><%= appointment.pet_in_heat %></td>
+    </tr>
+    <tr>
+      <th>Is your pet pregnant?</th>
+      <td><%= appointment.pet_pregnant %></td>
+    </tr>
+    <tr>
+      <th>Did you pet have a litter? If so, when?</th>
+      <td><%= appointment.had_litter_when %></td>
+    </tr>
+    <tr>
+      <th>Has your male pet's testicles decended?</th>
+      <td><%= appointment.pet_testicles_decended %></td>
+    </tr>
+    <tr>
+      <th>If so, how many?</th>
+      <td><%= appointment.testicle_count %></td>
+    </tr>
+    <tr>
+      <th>How did you acquire your pet?</th>
+      <td><%= appointment.testicle_count %></td>
+    </tr>
+    <tr>
+      <th>How long have you owned your pet?</th>
+      <td><%= appointment.owned_for %></td>
+    </tr>
+    <tr>
+      <th>Has your pet been vaccinated?</th>
+      <td><%= appointment.pet_vaccinated %></td>
+    </tr>
+    <tr>
+      <th>Veterinarian's name</th>
+      <td><%= appointment.vet_name %></td>
+    </tr>
+    <tr>
+      <th>Any previous surgery? If so, please explain</th>
+      <td><%= appointment.surgeries_explanation %></td>
+    </tr>
+    <tr>
+      <th>Any previous health issues? If so, please explain</th>
+      <td><%= appointment.health_concerns_explanation %></td>
+    </tr>
+    <tr>
+      <th>Any medications? If so, please explain</th>
+      <td><%= appointment.medications_explanation %></td>
+    </tr>
+  </tbody>
+</table>
