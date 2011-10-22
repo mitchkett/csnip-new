@@ -1,7 +1,8 @@
 class Appointment < ActiveRecord::Base
 
-  validates_presence_of :last_name, :first_name, :phone, :pet_type, :gender, :age, :pet_name
-  validates_presence_of :street, :city, :postal_code, :county
+  validates_presence_of :last_name, :first_name, :street, :city, :postal_code, :county, :phone, :pet_type, :gender, :pet_name
+  validates_presence_of :weight, :unless => Proc.new { |appt| appt.pet_type == "cat" }
+  
   before_create :set_acquired_from
   
   attr_accessor :acquired_from_type, :acquired_from_other_description
