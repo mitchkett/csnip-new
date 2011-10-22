@@ -9,7 +9,7 @@
 	    </ul>
 	  <% end %>
 	</div>
-	<%- form_for @appointment, :html => { :class => "bp" } do |f| -%>
+	<%= form_for @appointment, :html => { :class => "bp" } do |f| %>
 		<div class="user_info">
 			<fieldset>
 				<legend>Contact Information</legend>
@@ -177,7 +177,7 @@
 				  <%= f.label :pet_testicles_decended, "Has your male pet's testicles decended?" %><br />
 				  <%= f.radio_button :pet_testicles_descended, :yes %>
 				  <%= f.radio_button :pet_testicles_descended, :no %>
-				  <%= f.radio_button :pet_testicles_descended, :not_sure %>
+				  4<%= f.radio_button :pet_testicles_descended, :not_sure %>
 				</p>
 				<p class="required">
 				  <%= f.label :testicle_count, "If so, how many?" %><br />
@@ -191,5 +191,5 @@
 				<%= f.submit "I'm Done, send the request to C-SNIP" %>
 			</fieldset>
 		</div>
-	<%- end -%>
+	<% end %>
 </div>
