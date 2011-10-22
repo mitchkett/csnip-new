@@ -85,10 +85,6 @@
 				  <%= f.text_field :weight %><br />
 					<span class="notes">An approximate is fine</span>
 				</p>
-				<p class="required">
-				  <%= f.label :date_of_birth %><br />
-				  <%= f.text_field :date_of_birth %>
-				</p>
 				<p class="dog_only">
 				  <%= f.label :breed %><br />
 				  <%= f.text_field :breed %>
@@ -100,6 +96,10 @@
 				<p class="required">
 				  <%= f.check_box :want_chip_implant %>
 				  <%= f.label :want_chip_implant, "Would you like a chip implant?" %>
+				</p>
+				<p class="required">
+				  <%= f.label :date_of_birth %><br />
+				  <%= f.text_field :date_of_birth %>
 				</p>
 				<p class="required">
 				  <%= f.check_box :want_rabies_vaccination %>
