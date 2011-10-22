@@ -1,7 +1,7 @@
 <div id="appointments_listing">
   <h2>Appointments</h2>
   <div class="search">
-	   <%= form_tag search_appointments_path %>
+	   <%= form_tag search_appointments_path, :method => :get %>
 		    <%= label_tag :last_name %>
 		    <%= text_field_tag :last_name, nil, :size => 15 %>
 
@@ -9,17 +9,23 @@
 		    <%= text_field_tag :county, nil, :size => 15 %>
 
 		    <%= label_tag "Zipcode" %>
-		    <%= text_field_tag :postal_code, nil, :size => 10 %>
+		    <%= text_field_tag :zip, nil, :size => 10 %>
 
 		    <span class="separator">|</span>
-				<%= select_tag :pet_type, ['Cat', 'Dog'] %>
+				<%= label_tag "Pet Type" %>
+				<%= select_tag :pet_type, options_for_select(['', 'Cat', 'Dog']) %>
 		    <span class="separator">|</span>
 
 		    <label>Dates</label>
 		    <%= text_field_tag :from, nil, :size => 11 %>
 
-		    <label>-</label>
+		    <span>-</span>
 		    <%= text_field_tag :to, nil, :size => 11 %>
+		
+				<%= label_tag "Age" %>
+				<%= select_tag :age, options_for_select([['', 0], ['6 months & under', 1], ['Over 6 months', 2]]) %>
+				
+				<span class="separator">|</span>
 
 		    <%= submit_tag "Search" %>
 		  </form>
