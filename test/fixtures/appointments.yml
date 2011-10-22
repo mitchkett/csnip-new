@@ -1,0 +1,77 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  last_name: MyString
+  first_name: MyString
+  phone: MyString
+  alternate_phone: MyString
+  pet_name: MyString
+  street: MyString
+  city: MyString
+  postal_code: MyString
+  county: MyString
+  pet_type: MyString
+  breed: MyString
+  color: MyString
+  gender: MyString
+  surgeries_explanation: MyText
+  health_concerns_explanation: MyText
+  medications_explanation: MyText
+  date_of_birth: 2011-10-21
+  owned_for: MyString
+  vet_name: MyString
+  had_litter_when: MyString
+  testicle_count: 1
+  weight: MyString
+  want_chip_implant: 
+  want_rabies_vaccination: 
+  comments: MyText
+  email: MyString
+  acquired_from: MyString
+  best_time_to_contact_client: MyString
+  pet_vaccinated: MyString
+  pet_pregnant: MyString
+  pet_in_heat: MyString
+  pet_testicles_descended: MyString
+  has_pet_seen_vet: MyString
+  where_pet_lives: MyString
+  is_pet_tame: 
+  date_preferred: 2011-10-21
+
+two:
+  last_name: MyString
+  first_name: MyString
+  phone: MyString
+  alternate_phone: MyString
+  pet_name: MyString
+  street: MyString
+  city: MyString
+  postal_code: MyString
+  county: MyString
+  pet_type: MyString
+  breed: MyString
+  color: MyString
+  gender: MyString
+  surgeries_explanation: MyText
+  health_concerns_explanation: MyText
+  medications_explanation: MyText
+  date_of_birth: 2011-10-21
+  owned_for: MyString
+  vet_name: MyString
+  had_litter_when: MyString
+  testicle_count: 1
+  weight: MyString
+  want_chip_implant: 
+  want_rabies_vaccination: 
+  comments: MyText
+  email: MyString
+  acquired_from: MyString
+  best_time_to_contact_client: MyString
+  pet_vaccinated: MyString
+  pet_pregnant: MyString
+  pet_in_heat: MyString
+  pet_testicles_descended: MyString
+  has_pet_seen_vet: MyString
+  where_pet_lives: MyString
+  is_pet_tame: 
+  date_preferred: 2011-10-21

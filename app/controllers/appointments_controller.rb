@@ -1,5 +1,5 @@
 class AppointmentsController < ApplicationController
-  before_filter :login_required, :except => [:new, :create]
+  before_filter :authenticate_user!, :except => [:new, :create]
   layout 'admin'
 
   def index

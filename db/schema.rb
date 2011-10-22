@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100328152248) do
+ActiveRecord::Schema.define(:version => 20111022014300) do
 
   create_table "appointments", :force => true do |t|
     t.string   "last_name"
@@ -19,8 +19,6 @@ ActiveRecord::Schema.define(:version => 20100328152248) do
     t.string   "phone"
     t.string   "alternate_phone"
     t.string   "pet_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "street"
     t.string   "city"
     t.string   "postal_code"
@@ -32,42 +30,47 @@ ActiveRecord::Schema.define(:version => 20100328152248) do
     t.text     "surgeries_explanation"
     t.text     "health_concerns_explanation"
     t.text     "medications_explanation"
-    t.string   "age"
+    t.date     "date_of_birth"
     t.string   "owned_for"
     t.string   "vet_name"
     t.string   "had_litter_when"
     t.integer  "testicle_count"
     t.string   "weight"
-    t.string   "date_of_birth"
     t.boolean  "want_chip_implant"
     t.boolean  "want_rabies_vaccination"
     t.text     "comments"
     t.string   "email"
     t.string   "acquired_from"
-    t.string   "current_status"
     t.string   "best_time_to_contact_client"
     t.string   "pet_vaccinated"
     t.string   "pet_pregnant"
     t.string   "pet_in_heat"
-    t.string   "pet_testicles_decended"
-  end
-
-  add_index "appointments", ["current_status"], :name => "index_appointments_on_current_status"
-  add_index "appointments", ["pet_type"], :name => "index_appointments_on_pet_type"
-
-  create_table "users", :force => true do |t|
-    t.string   "login",                     :limit => 40
-    t.string   "name",                      :limit => 100, :default => ""
-    t.string   "email",                     :limit => 100
-    t.string   "crypted_password",          :limit => 40
-    t.string   "salt",                      :limit => 40
+    t.string   "pet_testicles_descended"
+    t.string   "has_pet_seen_vet"
+    t.string   "where_pet_lives"
+    t.boolean  "is_pet_tame"
+    t.date     "date_preferred"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "remember_token",            :limit => 40
-    t.datetime "remember_token_expires_at"
-    t.boolean  "admin",                                    :default => false, :null => false
   end
 
-  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+  create_table "users", :force => true do |t|
+    t.string   "email",                               :default => "", :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "password_salt",                       :default => "", :null => false
+    t.string   "reset_password_token"
+    t.string   "remember_token"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                       :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
