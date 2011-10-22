@@ -5,7 +5,7 @@ class Appointment < ActiveRecord::Base
   
   validates :weight, :presence => { :if => lambda { |appt| appt.pet_type == "dog" } }
   validates :pet_testicles_descended, :presence => { :if => lambda { |appt| appt.gender == "male" } }
-  validates :testicle_count, :presence => { :if => lambda { |appt| appt.gender == "male" } }
+  validates :testicle_count, :presence => { :if => lambda { |appt| appt.gender == "male" && appt.pet_testicles_descended == "yes" } }
   
   before_create :set_acquired_from
   
