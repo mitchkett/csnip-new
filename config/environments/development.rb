@@ -12,15 +12,6 @@ CsnipNew::Application.configure do
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
-  
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address              => "mail.tigertech.net",
-    :port                 => 587,
-    :user_name            => 'appointmentrequest@csnip.org',
-    :password             => 'retuen12',
-    :authentication       => 'plain',
-    :enable_starttls_auto => true  }
     
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false

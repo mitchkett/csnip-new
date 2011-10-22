@@ -1,5 +1,5 @@
 class AppointmentMailer < ActionMailer::Base
-  default :from => "support@csnip.org"
+  default :from => "appointmentrequest@csnip.org"
   
   def appointment_submitted(appointment)
     @appointment = appointment
