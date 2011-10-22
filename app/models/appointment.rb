@@ -1,5 +1,9 @@
 class Appointment < ActiveRecord::Base
 
+  validates_presence_of :last_name, :first_name, :phone, :pet_type, :gender, :age, :pet_name
+  validates_presence_of :street, :city, :postal_code, :county
+  before_create :set_acquired_from
+  
   attr_accessor :acquired_from_type, :acquired_from_other_description
   
   def set_acquired_from

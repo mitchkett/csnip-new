@@ -27,7 +27,7 @@
 					<span class="notes">e.g., (616) 555-5555</span>
 				</p>
 				<p class="required">
-				  <%= f.label :best_time_to_contact_client, "What is the best time to contact you?" %><br />
+				  <%= f.label :best_time_to_contact_client, "What is the best time to contact you between 9am and 4pm?" %><br />
 				  <%= f.text_field :best_time_to_contact_client %>
 				</p>
 				<p class="required">
@@ -108,7 +108,7 @@
 				</p>
 				<p class="required">
 				  <%= f.text_field :want_rabies_vaccination %><br />
-					<%= f.label :want_rabies_vaccination, "Would you like a rabies vaccination?" %>
+					<%= f.label :want_rabies_vaccination, "If your pet is 16 weeks or older would you like a rabies vaccination?" %>
 				</p>
 				<p class="required">
 				  <%= f.label :comments, "Please list any other information you have:" %><br />
@@ -148,6 +148,7 @@
 				<p class="required">
 				  <%= f.label :surgeries_explanation, "Any previous surgery? If so, please explain:" %><br />
 				  <%= f.text_area :surgeries_explanation %>
+				  * Please let us know if your pet is declawed.
 				</p>
 				<p class="required">
 				  <%= f.label :health_concerns_explanation, "Any health issues? If so, please explain:" %><br />
@@ -177,7 +178,7 @@
 				  <%= f.label :pet_testicles_decended, "Has your male pet's testicles decended?" %><br />
 				  <%= f.radio_button :pet_testicles_descended, :yes %>
 				  <%= f.radio_button :pet_testicles_descended, :no %>
-				  4<%= f.radio_button :pet_testicles_descended, :not_sure %>
+				  <%= f.radio_button :pet_testicles_descended, :not_sure %>
 				</p>
 				<p class="required">
 				  <%= f.label :testicle_count, "If so, how many?" %><br />
