@@ -25,6 +25,7 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(params[:appointment])
+    @appointment.date_of_birth = Date.strptime(params[:appointment][:date_of_birth], "%Y-%m-%d")
     if @appointment.save
       render :layout => 'application'
     else
