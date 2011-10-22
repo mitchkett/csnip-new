@@ -36,6 +36,7 @@ class CreateAppointments < ActiveRecord::Migration
       t.string :has_pet_seen_vet
       t.string :where_pet_lives
       t.boolean :is_pet_tame
+      t.boolean :has_had_litter
       t.date :date_preferred
 
       t.timestamps
