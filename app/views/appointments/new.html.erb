@@ -145,6 +145,10 @@
 			  								['Yes, at a veterinarian', :yes_vet], ['No', :no], ['Not sure', :not_sure]] %>
 			</p>
 			<p>
+			  <%= f.check_box :has_pet_seen_vet %>
+			  <%= f.label :has_pet_seen_vet, "Has your pet seen a veterinarian?" %>
+			</p>
+			<p class="vet_name">
 			  <%= f.label :vet_name, "Veterinarian's Name" %><br />
 			  <%= f.text_field :vet_name %>
 			</p>
@@ -222,6 +226,14 @@
       } else {
 		$(".dog_only").hide();
 		$(".cat_only").hide();
+      }
+    }).change();
+    
+    $('#appointment_has_pet_seen_vet').change(function() {
+      if($(this).is(':checked')) {
+        $(".vet_name").show();
+      } else {
+        $(".vet_name").hide();
       }
     }).change();
   });
