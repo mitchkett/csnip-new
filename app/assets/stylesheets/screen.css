@@ -256,8 +256,8 @@ body.bp {
   body.bp .showgrid {
     background: url('/images/grid.png?1269800232'); }
   body.bp .error {
-    padding: .8em;
-    margin-bottom: 1em;
+    padding: .2em;
+    margin-bottom: .5em;
     border: 2px solid #dddddd;
     background: #fbe3e4;
     color: #8a1f11;

@@ -2,6 +2,7 @@
 	<h1>Request an Appointment for your Pet</h1>
 	<div class="errorExplanationContainer">
 	  <% if @appointment.errors.any? %>
+	    <h2><%= pluralize(@appointment.errors.count, "error") %> need to fixed before this appointment is submitted:</h2>
 	    <ul>
 		  <% @appointment.errors.full_messages.each do |msg| %>
 		    <li class="error"><%= msg %></li>
@@ -31,12 +32,12 @@
 			  <%= f.label :best_time_to_contact_client, "What is the best time to contact you between 9am and 4pm?" %><br />
 			  <%= f.text_field :best_time_to_contact_client %>
 			</p>
-			<p class="required">
+			<p>
 			  <%= f.label :alternate_phone %><br />
 			  <%= f.text_field :alternate_phone %><br />
 			  <span class="notes">e.g., (616) 555-5555</span>
 			</p>
-			<p class="required">
+			<p>
 			  <%= f.label :email %><br />
 			  <%= f.text_field :email %>
 			</p>
@@ -71,15 +72,12 @@
 			  <%= f.text_field :pet_name %>
 			</p>
 			<p class="required">
-			  <%= label_tag "Your pet is a" %><br />
-			  <%= f.radio_button :pet_type, :dog %>
-			  <%= f.label :pet_type, "Dog", :value => :dog %><br />
-			  <%= f.radio_button :pet_type, :cat %>
-			  <%= f.label :pet_type, "Cat", :value => :cat %>
+			  <%= label_tag "Your pet is a" %>
+			  <%= f.select :pet_type, [['(please select)', ], ['Dog', :dog], ['Cat', :cat]] %>
 			</p>
-			<p class="required">
-			  <%= f.label :gender %><br />
-			  <%= f.text_field :gender %>
+		   <p class="required">
+			  <%= f.label :gender %>
+			  <%= f.select :gender, [['(please select)', ], ['Male', :male], ['Female', :female], ['Not sure', :not_sure]] %>
 			</p>
 			<p class="dog_only">
 			  <%= f.label :weight, "Approximate weight of your dog" %><br />
@@ -89,23 +87,28 @@
 			  <%= f.label :breed %><br />
 			  <%= f.text_field :breed %>
 			</p>
-			<p class="required">
+			<p class="cat_only">
+			  <%= f.label :breed, "Type of hair" %><br />
+			  <%= f.text_field :breed %><br />
+			  <span class="notes">e.g., short hair, medium hair, long hair.</span>
+			</p>
+			<p>
 			  <%= f.label :color %><br />
 			  <%= f.text_field :color %>
 			</p>
-			<p class="required">
+			<p>
 			  <%= f.check_box :want_chip_implant %>
 			  <%= f.label :want_chip_implant, "Would you like a chip implant?" %>
 			</p>
 			<p class="required">
-			  <%= f.label :date_of_birth %><br />
+			  <%= f.label :date_of_birth, "Approximate date of birth" %><br />
 			  <%= f.text_field :date_of_birth %>
 			</p>
-			<p class="required">
+			<p>
 			  <%= f.check_box :want_rabies_vaccination %>
 			  <%= f.label :want_rabies_vaccination, "If your pet is 16 weeks or older would you like a rabies vaccination?" %>
 			</p>
-			<p class="required">
+			<p>
 			  <%= f.label :comments, "Please list any other information you have:" %><br />
 			  <%= f.text_area :comments, :size => "48x6" %>
 			</p>
@@ -114,89 +117,72 @@
 	<div class="pet_history">
 		<fieldset>
 			<legend>Pet History</legend>
-			<p class="required">
-			  <%= f.label :acquired_from_type %><br />
-			  <%= f.radio_button :acquired_from_type, :stray %>
-			  <%= f.label :acquired_from_type, "Stray", :value => :stray %><br />
-			  <%= f.radio_button :acquired_from_type, :adopted %>
-			  <%= f.label :acquired_from_type, "Adopted", :value => :adopted %><br />
-			  <%= f.radio_button :acquired_from_type, :friend %>
-			  <%= f.label :acquired_from_type, "Friend", :value => :friend %><br />
-			  <%= f.radio_button :acquired_from_type, :breeder %>
-			  <%= f.label :acquired_from_type, "Breeder", :value => :breeder %><br />
-			  <%= f.radio_button :acquired_from_type, :other %>
-			  <%= f.label :acquired_from_type, "Other", :value => :other %><br />
+			<p>
+			  <%= f.label :acquired_from_type %>
+			  <%= f.select :acquired_from_type, [['(please select)', ], ['Stray', :stray], ['Adopted', :adopted], ['Friend', :friend], ['Breeder', :breeder], ['Other', :other]] %>
+			  <br />
 			  <span style="margin-left: 20px">
+			  	<%= f.label :acquired_from_other_description %>
 			    <%= f.text_field :acquired_from_other_description %>
 			  </span>
 			</p>
-			<p class="required">
+			<p>
 			  <%= f.label :owned_for, "How long have you owned your pet?" %><br />
 			  <%= f.text_field :owned_for %><br />
-				<span class="notes">e.g., 1 year, about 18 months</span>
+			  <span class="notes">e.g., 1 year, about 18 months</span>
 			</p>
-			<p class="required">
-			  <%= f.label :pet_vaccinated, "Has your pet been vaccinated?" %><br />
-			  <%= f.radio_button :pet_vaccinated, :yes %>
-			  <%= f.label :pet_vaccinated, "Yes", :value => :yes %><br />
-			  <%= f.radio_button :pet_vaccinated, :no %>
-			  <%= f.label :pet_vaccinated, "No", :value => :no %><br />
-			  <%= f.radio_button :pet_vaccinated, :not_sure %>
-			  <%= f.label :pet_vaccinated, "Not sure", :value => :not_sure %><br />
+			<p>
+			  <%= f.label :where_pet_lives, "Where does your pet live?" %>
+			  <%= f.select :where_pet_lives, [['(please select)', ], ['Inside', :inside], ['Outside', :outside], ['Both', :both]] %>
 			</p>
-			<p class="required">
+			<p>
+			  <%= f.check_box :is_pet_tame %>
+			  <%= f.label :is_pet_tame, "Is your outdoor pet tame or friendly?" %>
+			</p>
+			<p>
+			  <%= f.label :pet_vaccinated, "Has your pet been vaccinated?" %>
+			  <%= f.select :pet_vaccinated, [['(please select)', ], ['Yes, self administered', :yes_self], 
+			  								['Yes, at a veterinarian', :yes_vet], ['No', :no], ['Not sure', :not_sure]] %>
+			</p>
+			<p>
 			  <%= f.label :vet_name, "Veterinarian's Name" %><br />
 			  <%= f.text_field :vet_name %>
 			</p>
-			<p class="required">
+			<p>
 			  <%= f.label :surgeries_explanation, "Any previous surgery, including declawing? If so, please explain:" %><br />
 			  <%= f.text_area :surgeries_explanation, :size => "48x6"  %><br />
 			</p>
-			<p class="required">
+			<p>
 			  <%= f.label :health_concerns_explanation, "Any health issues? If so, please explain:" %><br />
 			  <%= f.text_area :health_concerns_explanation, :size => "48x6"  %>
 			</p>
-			<p class="required">
+			<p>
 			  <%= f.label :medications_explanation, "Any medications? If so, please explain:" %><br />
 			  <%= f.text_field :medications_explanation %>
 			</p>
-			<p class="required">
-			  <%= f.label :pet_in_heat, "Is your pet in heat?" %><br />
-			  <%= f.radio_button :pet_in_heat, :yes %>
-			  <%= f.label :pet_in_heat, "Yes", :value => "Yes" %><br />
-			  <%= f.radio_button :pet_in_heat, :no %>
-			  <%= f.label :pet_in_heat, "No", :value => :no %><br />
-			  <%= f.radio_button :pet_in_heat, :not_sure %>
-			  <%= f.label :pet_in_heat, "Not sure", :value => :not_sure %>
+			<p class="female_only">
+			  <%= f.label :pet_in_heat, "Is your pet in heat?" %>
+			  <%= f.select :pet_in_heat, [['(please select)', ], ['Yes', :yes], ['No', :no], ['Not sure', :not_sure]] %>
 			</p>
-			<p class="required">
-			  <%= f.label :pet_pregnant, "Is your pet pregnant?" %><br />
-			  <%= f.radio_button :pet_pregnant, :yes %>
-			  <%= f.label :pet_pregnant, "Yes", :value => :yes %><br />
-			  <%= f.radio_button :pet_pregnant, :no %>
-			  <%= f.label :pet_pregnant, "No", :value => :no %><br />
-			  <%= f.radio_button :pet_pregnant, :not_sure %>
-			  <%= f.label :pet_pregnant, "Not sure", :value => :not_sure %>
+			<p class="female_only">
+			  <%= f.label :pet_pregnant, "Is your pet pregnant?" %>
+			  <%= f.select :pet_pregnant, [['(please select)', ], ['Yes', :yes], ['No', :no], ['Not sure', :not_sure]] %>
 			</p>
-			<p class="required">
-			  <%= f.label :had_litter_when, "Has your pet had a litter? If so, when?" %><br />
-			  <%= f.text_field :had_litter_when %>
+			<p class="female_only">
+				.... has had any litters...
 			</p>
-			<p class="required">
-			  <%= f.label :pet_testicles_descended, "Has your male pet's testicles decended?" %><br />
-			  <%= f.radio_button :pet_testicles_descended, :yes %>
-			  <%= f.label :pet_testicles_descended, "Yes", :value => :yes %><br />
-			  <%= f.radio_button :pet_testicles_descended, :no %>
-			  <%= f.label :pet_testicles_descended, "No", :value => :no %><br />
-			  <%= f.radio_button :pet_testicles_descended, :not_sure %>
-			  <%= f.label :pet_testicles_descended, "Not sure", :value => :not_sure %>
+			<p class="female_only">
+			  <%= f.label :had_litter_when, "Approximately when was the most recent litter?" %><br />
+			  <%= f.text_field :had_litter_when %><br />
+			  <span class="notes">e.g., 1 year, about 6 months</span>
 			</p>
-			<p class="required">
-			  <%= f.label :testicle_count, "If so, how many?" %><br />
-			  <%= f.radio_button :testicle_count, 1 %>
-			  <%= f.label :testicle_count, "One (1)", :value => 1 %><br />
-			  <%= f.radio_button :testicle_count, 2 %>
-			  <%= f.label :testicle_count, "Two (2)", :value => 2 %>
+			<p class="male_only required">
+			  <%= f.label :pet_testicles_descended, "Has your male pet's testicles decended?" %>
+			  <%= f.select :pet_testicles_descended, [['(please select)', ], ['Yes', :yes], ['No', :no], ['Not sure', :not_sure]] %>
+			</p>
+			<p class="male_only required">
+			  <%= f.label :testicle_count, "If so, how many?" %>
+			  <%= f.select :testicle_count, [['(please select)', ], ['One (1)', 1], ['Two (2)', 2]] %>
 			</p>
 		</fieldset>
 	</div>
@@ -210,6 +196,33 @@
   $(function() {
     $("#appointment_phone").mask("(999) 999-9999");
     $("#appointment_alternate_phone").mask("(999) 999-9999");
-    $("#appointment_date_of_birth").datepicker();
+    $("#appointment_date_of_birth").datepicker({ dateFormat: 'yy-mm-dd'});
+    
+    $('#appointment_gender').change(function() {
+      if($(this).val() == "male") {
+		$(".female_only").hide();
+		$(".male_only").show();
+      } else if ($(this).val() == "female") {
+        $(".male_only").hide();
+        $(".female_only").show();
+      }
+      else {
+        $(".female_only").hide();
+        $(".male_only").hide();
+      }
+    }).change();
+    
+    $('#appointment_pet_type').change(function() {
+      if($(this).val() == "cat") {
+		$(".dog_only").hide();
+		$(".cat_only").show();
+      } else if ($(this).val() == "dog") {
+		$(".cat_only").hide();
+		$(".dog_only").show();
+      } else {
+		$(".dog_only").hide();
+		$(".cat_only").hide();
+      }
+    }).change();
   });
 </script>
