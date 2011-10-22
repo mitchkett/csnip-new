@@ -1,6 +1,5 @@
 class AppointmentsController < ApplicationController
   #before_filter :authenticate_user!, :except => [:new, :create]
-  layout 'admin'
 
   def index
     @search = Appointment.order('id DESC')
@@ -21,6 +20,8 @@ class AppointmentsController < ApplicationController
     end
     #@search.pet_type_equals_any = %w[dog cat] unless params[:search] && params[:search][:pet_type_equals_any]
     @appointments = @search.paginate(:page => params[:page], :per_page => 50)
+    
+    render :layout => 'admin'
   end
   
   def search
@@ -39,16 +40,19 @@ class AppointmentsController < ApplicationController
 
   def show
     @appointment = Appointment.find(params[:id])
+    render :layout => 'admin'
   end
 
   def print
     @appointments = Appointment.find(params[:ids])
-    #@appointments.each { |a| a.print! }
+    @appointments.each do |appt|
+      appt.update_attributes(:printed_date => Time.now)
+    end
+    render :layout => 'admin'
   end
 
   def new
     @appointment = Appointment.new(params[:appointment])
-    render :layout => 'application'
   end
 
   def create
@@ -58,6 +62,14 @@ class AppointmentsController < ApplicationController
       render :layout => 'application'
     else
       render :action => :new, :layout => 'application'
+    end
+  end
+  
+  def approve
+    @appointment = Appointment.find(params[:id])
+    if @appointment.update_attributes(:status => "APPROVED")
+      flash[:notice] = "Appointment #{@appointment.id.to_s} with #{@appointment.client_full_name} has been approved."
+      redirect_to appointments_path
     end
   end
 

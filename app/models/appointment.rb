@@ -8,6 +8,7 @@ class Appointment < ActiveRecord::Base
   validates :testicle_count, :presence => { :if => lambda { |appt| appt.gender == "male" && appt.pet_testicles_descended == "yes" } }
   
   before_create :set_acquired_from
+  before_create :set_status_to_pending
   
   attr_accessor :acquired_from_type, :acquired_from_other_description
   attr_reader :age
@@ -44,6 +45,10 @@ class Appointment < ActiveRecord::Base
   
   def age
     "Unknown"
+  end
+  
+  def set_status_to_pending
+    self.status = "PENDING"
   end
 
 end

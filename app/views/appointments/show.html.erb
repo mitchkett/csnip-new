@@ -1,1 +1,9 @@
 <%= render @appointment %>
+<div class="appointment_buttons">
+	<%- unless @appointment.status.blank? -%>
+	<%- if @appointment.status.upcase == "PENDING" -%>
+		<%= link_to 'Approve', approve_appointment_path(@appointment) %> | 
+		<%= link_to 'Deny', deny_appointment_path(@appointment) %>
+	<%- end -%>
+	<%- end -%>
+</div>

@@ -53,6 +53,7 @@
             <th> Pet Sex </th>
             <th> Vaccinated? </th>
             <th> Pregnant? </th>
+						<th> Status </th>
             <th> &nbsp; </th>
           </thead>
         <tbody>
@@ -87,6 +88,9 @@
               <td>
                 <%= appointment.pet_pregnant.to_s.humanize %>
               </td>
+							<td>
+								<%= appointment.status.upcase unless appointment.status.blank? %>
+							</td>
               <td>
                 <%= link_to 'Show', appointment %>
               </td>
