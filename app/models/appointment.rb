@@ -3,7 +3,10 @@ class Appointment < ActiveRecord::Base
   validates_presence_of :last_name, :first_name, :phone, :best_time_to_contact_client, :street, :city, :postal_code, :county
   validates_presence_of :pet_name, :pet_type, :gender, :date_of_birth
   
-  validates_presence_of :weight, :unless => Proc.new { |appt| appt.pet_type == "cat" }
+  validates_presence_of :weight, :if => lambda { |appt| appt.pet_type == "dog" }
+  
+  validates_presence_of :pet_testicles_descended, :if => lambda { |appt| appt.gender == "male" }
+  validates_presence_of :testicle_count, :if => lambda { |appt| appt.gender == :male }
   
   before_create :set_acquired_from
   
