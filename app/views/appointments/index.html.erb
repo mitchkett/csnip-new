@@ -1,35 +1,8 @@
 <div id="appointments_listing">
-  <h2Appointments</h2>
+  <h2>Appointments</h2>
   <div class="search">
-    <% form_for(@search) do |f| %>
-      <%= f.label :last_name_like %>
-      <%= f.text_field :last_name_like, :size => 15 %>
-      
-      <%= f.label :county_like %>
-      <%= f.text_field :county_like, :size => 15 %>
-      
-	  <% f.label :postal_code_like %>
-      <% f.text_field :postal_code_like, :size => 10 %>
-      
-      <span class="separator">|</span>
-      
-      <%= f.check_box "pet_type_equals_any", {:name => "search[pet_type_equals_any][]"}, "cat" %>
-	  <label>Cats</label>
-
-      <%= f.check_box "pet_type_equals_any", {:name => "search[pet_type_equals_any][]"}, "dog" %>
-      <label>Dogs</label>
-
-      <span class="separator">|</span>
-      
-      <label>Dates</label>
-      <%=f.text_field :created_at_after, :size => 11 %>
-
-      <label>-</label>
-      <%= f.text_field :created_at_before, :size => 11 %>
-
-      <%= f.submit "Search" %>
-	<% end %>
-  </div>
+	   
+	  </div>
   <div class="search_statistics">
     Search returned <strong><%= number_with_delimiter(@search.count) %></strong> results: 
     <strong><%= @search.count(:conditions => {:pet_type => 'cat'}) %></strong> cats and 
@@ -39,7 +12,7 @@
     <h3 class="no_data">There are no appointments matching the criteria you've selected.</h3>
   <% else %>
     <%= will_paginate @appointments %>
-    <% form_tag(print_appointments_path) do %>
+    <%= form_tag print_appointments_path %>
       <%= submit_tag "Print Selected" %>
       <table>
         <thead>
@@ -100,7 +73,8 @@
           </tr>
         </tbody>
       </table>
-    <% end %>
+    </form>
+<%- end -%>
     <%= will_paginate @appointments %>
   </div>
 </div>

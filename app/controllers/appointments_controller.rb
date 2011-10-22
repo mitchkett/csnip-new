@@ -1,12 +1,11 @@
 class AppointmentsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:new, :create]
+  #before_filter :authenticate_user!, :except => [:new, :create]
   layout 'admin'
 
   def index
-    @search = Appointment.descend_by_id.search(params[:search])
-    @search.pet_type_equals_any = %w[dog cat] unless params[:search] && params[:search][:pet_type_equals_any]
-    
-    @appointments = @search.paginate(:page => params[:page], :per_page => 50)
+    @search = Appointment.order("id DESC")
+    #@search.pet_type_equals_any = %w[dog cat] unless params[:search] && params[:search][:pet_type_equals_any]
+    @appointments = Appointment.order("id DESC").paginate(:page => params[:page], :per_page => 50)
   end
 
   def show
