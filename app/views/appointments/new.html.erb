@@ -24,7 +24,7 @@
 				<p class="required">
 				  <%= f.label :phone %><br />
 				  <%= f.text_field :phone %><br />
-					<span class="notes">e.g., (616) 555-5555</span>
+				  <span class="notes">e.g., (616) 555-5555</span>
 				</p>
 				<p class="required">
 				  <%= f.label :best_time_to_contact_client, "What is the best time to contact you between 9am and 4pm?" %><br />
@@ -33,7 +33,7 @@
 				<p class="required">
 				  <%= f.label :alternate_phone %><br />
 				  <%= f.text_field :alternate_phone %><br />
-					<span class="notes">e.g., (616) 555-5555</span>
+				  <span class="notes">e.g., (616) 555-5555</span>
 				</p>
 				<p class="required">
 				  <%= f.label :email %><br />
@@ -72,27 +72,17 @@
 				<p class="required">
 				  <%= label_tag "Your pet is a" %><br />
 				  <%= f.radio_button :pet_type, :dog %>
-					<%= f.label :pet_type, "Dog", :value => :dog %><br />
-					<%= f.radio_button :pet_type, :cat %>
-					<%= f.label :pet_type, "Cat", :value => :cat %>
+				  <%= f.label :pet_type, "Dog", :value => :dog %><br />
+				  <%= f.radio_button :pet_type, :cat %>
+				  <%= f.label :pet_type, "Cat", :value => :cat %>
 				</p>
 				<p class="required">
 				  <%= f.label :gender %><br />
 				  <%= f.text_field :gender %>
 				</p>
-				<p class="required">
-				  <%= f.label :age %><br />
-				  <%= f.text_field :age %><br />
-					<span class="notes">e.g., 8 years, about 2 months</span>
-				</p>
 				<p class="dog_only">
-				  <%= f.label :weight %><br />
+				  <%= f.label :weight, "Approximate weight of your dog" %><br />
 				  <%= f.text_field :weight %><br />
-					<span class="notes">An approximate is fine</span>
-				</p>
-				<p class="required">
-				  <%= f.label :date_of_birth %><br />
-				  <%= f.text_field :date_of_birth %>
 				</p>
 				<p class="dog_only">
 				  <%= f.label :breed %><br />
@@ -105,6 +95,10 @@
 				<p class="required">
 				  <%= f.check_box :want_chip_implant %>
 				  <%= f.label :want_chip_implant, "Would you like a chip implant?" %>
+				</p>
+				<p class="required">
+				  <%= f.label :date_of_birth %><br />
+				  <%= f.text_field :date_of_birth %>
 				</p>
 				<p class="required">
 				  <%= f.check_box :want_rabies_vaccination %>
@@ -212,3 +206,10 @@
 		</div>
 	<% end %>
 </div>
+<script type="text/javascript">
+  $(function() {
+    $("#appointment_phone").mask("(999) 999-9999");
+    $("#appointment_alternate_phone").mask("(999) 999-9999");
+    $("#appointment_date_of_birth").datepicker();
+  });
+</script>
