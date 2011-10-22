@@ -1,23 +1,24 @@
-!!! XML
-!!!
-%html
-  %head
-    %meta{ 'http-equiv' => 'content-type', :content => 'text/html; charset=utf-8' }
-    
-    %title C-SNIP :: Administration
-    = stylesheet_link_tag 'compiled/screen.css', :media => 'screen, projection'
-    = stylesheet_link_tag 'compiled/print.css', :media => 'print'
-    = javascript_include_tag 'appointmentlist.js'
-    %script{ :src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' }
-      
-    /[if IE]
-      = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
-
-  %body.bp.admin
-    #container
-      #bar= link_to '&larr; Back to Site', 'http://csnip.org/'
-      #header
-        = image_tag('logo.png', :style => 'float: left')
-        %h1 Administration
-      = flash_div :error, :warning, :notice
-      = yield
+<!DOCTYPE html>
+	<head>
+		<meta http-equiv="content-type" content="text/html" charset="utf-8"></meta>
+		<title>C-SNIP :: Administration</title>
+		<%= stylesheet_link_tag 'compiled/screen.css', :media => 'screen, projection' %>
+		<%= stylesheet_link_tag 'compiled/print.css', :media => 'print' %>
+		<!-- [if IE] 
+		<%= stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection' %>
+		-->
+		<%= javascript_include_tag 'appointmentlist.js' %>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	</head>
+	<body class="bp admin">
+		<div id="container">
+			<div id="bar"><%= link_to '&larr; Back to Site', 'http://csnip.org' %></div>
+			<div id="header">
+				<%= image_tag('logo.png', :style => 'float: left;') %>
+				<h1>Administration</h1>
+				<%= flash_div :error, :warning, :notice %>
+				<%= yield %>
+			</div>
+		</div>
+	</body>
+</html>
