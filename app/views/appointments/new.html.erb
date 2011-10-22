@@ -73,11 +73,11 @@
 			</p>
 			<p class="required">
 			  <%= label_tag "Your pet is a" %>
-			  <%= f.select :pet_type, [['(please select)', ], ['Dog', :dog], ['Cat', :cat]] %>
+			  <%= f.select :pet_type, [['(please select)', nil], ['Dog', :dog], ['Cat', :cat]] %>
 			</p>
 		   <p class="required">
 			  <%= f.label :gender %>
-			  <%= f.select :gender, [['(please select)', ], ['Male', :male], ['Female', :female], ['Not sure', :not_sure]] %>
+			  <%= f.select :gender, [['(please select)', nil], ['Male', :male], ['Female', :female], ['Not sure', :not_sure]] %>
 			</p>
 			<p class="dog_only">
 			  <%= f.label :weight, "Approximate weight of your dog" %><br />
@@ -119,7 +119,7 @@
 			<legend>Pet History</legend>
 			<p>
 			  <%= f.label :acquired_from_type %>
-			  <%= f.select :acquired_from_type, [['(please select)', ], ['Stray', :stray], ['Adopted', :adopted], ['Friend', :friend], ['Breeder', :breeder], ['Other', :other]] %>
+			  <%= f.select :acquired_from_type, [['(please select)', nil], ['Stray', :stray], ['Adopted', :adopted], ['Friend', :friend], ['Breeder', :breeder], ['Other', :other]] %>
 			  <br />
 			  <span style="margin-left: 20px">
 			  	<%= f.label :acquired_from_other_description %>
@@ -133,7 +133,7 @@
 			</p>
 			<p>
 			  <%= f.label :where_pet_lives, "Where does your pet live?" %>
-			  <%= f.select :where_pet_lives, [['(please select)', ], ['Inside', :inside], ['Outside', :outside], ['Both', :both]] %>
+			  <%= f.select :where_pet_lives, [['(please select)', nil], ['Inside', :inside], ['Outside', :outside], ['Both', :both]] %>
 			</p>
 			<p>
 			  <%= f.check_box :is_pet_tame %>
@@ -141,7 +141,7 @@
 			</p>
 			<p>
 			  <%= f.label :pet_vaccinated, "Has your pet been vaccinated?" %>
-			  <%= f.select :pet_vaccinated, [['(please select)', ], ['Yes, self administered', :yes_self], 
+			  <%= f.select :pet_vaccinated, [['(please select)', nil], ['Yes, self administered', :yes_self], 
 			  								['Yes, at a veterinarian', :yes_vet], ['No', :no], ['Not sure', :not_sure]] %>
 			</p>
 			<p>
@@ -166,15 +166,15 @@
 			</p>
 			<p class="female_only">
 			  <%= f.label :pet_in_heat, "Is your pet in heat?" %>
-			  <%= f.select :pet_in_heat, [['(please select)', ], ['Yes', :yes], ['No', :no], ['Not sure', :not_sure]] %>
+			  <%= f.select :pet_in_heat, [['(please select)', nil], ['Yes', :yes], ['No', :no], ['Not sure', :not_sure]] %>
 			</p>
 			<p class="female_only">
 			  <%= f.label :pet_pregnant, "Is your pet pregnant?" %>
-			  <%= f.select :pet_pregnant, [['(please select)', ], ['Yes', :yes], ['No', :no], ['Not sure', :not_sure]] %>
+			  <%= f.select :pet_pregnant, [['(please select)', nil], ['Yes', :yes], ['No', :no], ['Not sure', :not_sure]] %>
 			</p>
 			<p class="female_only">
 				<%= f.label :has_had_litter, "If a 6 months or older female has she had any litters?" %>
-				<%= f.select :has_had_litter, [['(please select)', ], ['Yes', :yes], ['No', :no], ['Not sure', :not_sure]] %>
+				<%= f.select :has_had_litter, [['(please select)', nil], ['Yes', :yes], ['No', :no], ['Not sure', :not_sure]] %>
 			</p>
 			<p class="female_only">
 			  <%= f.label :had_litter_when, "Approximately when was the most recent litter?" %><br />
@@ -183,11 +183,11 @@
 			</p>
 			<p class="male_only required">
 			  <%= f.label :pet_testicles_descended, "Has your male pet's testicles decended?" %>
-			  <%= f.select :pet_testicles_descended, [['(please select)', ], ['Yes', :yes], ['No', :no], ['Not sure', :not_sure]] %>
+			  <%= f.select :pet_testicles_descended, [['(please select)', nil], ['Yes', :yes], ['No', :no], ['Not sure', :not_sure]] %>
 			</p>
 			<p class="male_only required">
 			  <%= f.label :testicle_count, "If so, how many?" %>
-			  <%= f.select :testicle_count, [['(please select)', ], ['One (1)', 1], ['Two (2)', 2]] %>
+			  <%= f.select :testicle_count, [['(please select)', nil], ['One (1)', 1], ['Two (2)', 2]] %>
 			</p>
 		</fieldset>
 	</div>
