@@ -31,12 +31,12 @@
 			  <%= f.label :best_time_to_contact_client, "What is the best time to contact you between 9am and 4pm?" %><br />
 			  <%= f.text_field :best_time_to_contact_client %>
 			</p>
-			<p class="required">
+			<p>
 			  <%= f.label :alternate_phone %><br />
 			  <%= f.text_field :alternate_phone %><br />
 			  <span class="notes">e.g., (616) 555-5555</span>
 			</p>
-			<p class="required">
+			<p>
 			  <%= f.label :email %><br />
 			  <%= f.text_field :email %>
 			</p>
@@ -86,23 +86,28 @@
 			  <%= f.label :breed %><br />
 			  <%= f.text_field :breed %>
 			</p>
-			<p class="required">
+			<p class="cat_only">
+			  <%= f.label :breed, "Type of hair" %><br />
+			  <%= f.text_field :breed %><br />
+			  <span class="notes">e.g., short hair, medium hair, long hair.</span>
+			</p>
+			<p>
 			  <%= f.label :color %><br />
 			  <%= f.text_field :color %>
 			</p>
-			<p class="required">
+			<p>
 			  <%= f.check_box :want_chip_implant %>
 			  <%= f.label :want_chip_implant, "Would you like a chip implant?" %>
 			</p>
 			<p class="required">
-			  <%= f.label :date_of_birth %><br />
+			  <%= f.label :date_of_birth, "Approximate date of birth" %><br />
 			  <%= f.text_field :date_of_birth %>
 			</p>
-			<p class="required">
+			<p>
 			  <%= f.check_box :want_rabies_vaccination %>
 			  <%= f.label :want_rabies_vaccination, "If your pet is 16 weeks or older would you like a rabies vaccination?" %>
 			</p>
-			<p class="required">
+			<p>
 			  <%= f.label :comments, "Please list any other information you have:" %><br />
 			  <%= f.text_area :comments, :size => "48x6" %>
 			</p>
@@ -111,7 +116,7 @@
 	<div class="pet_history">
 		<fieldset>
 			<legend>Pet History</legend>
-			<p class="required">
+			<p>
 			  <%= f.label :acquired_from_type %>
 			  <%= f.select :acquired_from_type, [['(please select)', ], ['Stray', :stray], ['Adopted', :adopted], ['Friend', :friend], ['Breeder', :breeder], ['Other', :other]] %>
 			  <br />
@@ -120,48 +125,58 @@
 			    <%= f.text_field :acquired_from_other_description %>
 			  </span>
 			</p>
-			<p class="required">
+			<p>
 			  <%= f.label :owned_for, "How long have you owned your pet?" %><br />
 			  <%= f.text_field :owned_for %><br />
-				<span class="notes">e.g., 1 year, about 18 months</span>
+			  <span class="notes">e.g., 1 year, about 18 months</span>
 			</p>
-			<p class="required">
+			<p>
+			  <%= f.label :where_pet_lives, "Where does your pet live?" %>
+			  <%= f.select :where_pet_lives, [['(please select)', ], ['Inside', :inside], ['Outside', :outside], ['Both', :both]] %>
+			</p>
+			<p>
+			  <%= f.check_box :is_pet_tame %>
+			  <%= f.label :is_pet_tame, "Is your outdoor pet tame or friendly?" %>
+			</p>
+			<p>
 			  <%= f.label :pet_vaccinated, "Has your pet been vaccinated?" %>
-			  <%= f.select :pet_vaccinated, [['(please select)', ], ['Yes', :yes], ['No', :no], ['Not sure', :not_sure]] %>
+			  <%= f.select :pet_vaccinated, [['(please select)', ], ['Yes, self administered', :yes_self], 
+			  								['Yes, at a veterinarian', :yes_vet], ['No', :no], ['Not sure', :not_sure]] %>
 			</p>
-			<p class="required">
+			<p>
 			  <%= f.label :vet_name, "Veterinarian's Name" %><br />
 			  <%= f.text_field :vet_name %>
 			</p>
-			<p class="required">
+			<p>
 			  <%= f.label :surgeries_explanation, "Any previous surgery, including declawing? If so, please explain:" %><br />
 			  <%= f.text_area :surgeries_explanation, :size => "48x6"  %><br />
 			</p>
-			<p class="required">
+			<p>
 			  <%= f.label :health_concerns_explanation, "Any health issues? If so, please explain:" %><br />
 			  <%= f.text_area :health_concerns_explanation, :size => "48x6"  %>
 			</p>
-			<p class="required">
+			<p>
 			  <%= f.label :medications_explanation, "Any medications? If so, please explain:" %><br />
 			  <%= f.text_field :medications_explanation %>
 			</p>
-			<p class="required">
+			<p class="female">
 			  <%= f.label :pet_in_heat, "Is your pet in heat?" %>
 			  <%= f.select :pet_in_heat, [['(please select)', ], ['Yes', :yes], ['No', :no], ['Not sure', :not_sure]] %>
 			</p>
-			<p class="required">
+			<p class="female">
 			  <%= f.label :pet_pregnant, "Is your pet pregnant?" %>
 			  <%= f.select :pet_pregnant, [['(please select)', ], ['Yes', :yes], ['No', :no], ['Not sure', :not_sure]] %>
 			</p>
-			<p class="required">
-			  <%= f.label :had_litter_when, "Has your pet had a litter? If so, when?" %><br />
-			  <%= f.text_field :had_litter_when %>
+			<p class="female">
+			  <%= f.label :had_litter_when, "Approximately when was the most recent litter?" %><br />
+			  <%= f.text_field :had_litter_when %><br />
+			  <span class="notes">e.g., 1 year, about 6 months</span>
 			</p>
-			<p class="required">
+			<p class="male required">
 			  <%= f.label :pet_testicles_descended, "Has your male pet's testicles decended?" %>
 			  <%= f.select :pet_testicles_descended, [['(please select)', ], ['Yes', :yes], ['No', :no], ['Not sure', :not_sure]] %>
 			</p>
-			<p class="required">
+			<p class="male required">
 			  <%= f.label :testicle_count, "If so, how many?" %>
 			  <%= f.select :testicle_count, [['(please select)', ], ['One (1)', 1], ['Two (2)', 2]] %>
 			</p>
