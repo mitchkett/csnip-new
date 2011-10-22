@@ -1,7 +1,13 @@
 <div class="request">
 	<h1>Request an Appointment for your Pet</h1>
 	<div class="errorExplanationContainer">
-		<%= error_messages_for :appointment, :class => "error" %>
+	  <% if @appointment.errors.any? %>
+	    <ul>
+		  <% @appointment.errors.full_messages.each do |msg| %>
+		    <li class="error"><%= msg %></li>
+		  <% end %>
+	    </ul>
+	  <% end %>
 	</div>
 	<%- form_for @appointment, :html => { :class => "bp" } do |f| -%>
 		<div class="user_info">
@@ -169,9 +175,9 @@
 				</p>
 				<p class="required">
 				  <%= f.label :pet_testicles_decended, "Has your male pet's testicles decended?" %><br />
-				  <%= f.radio_button :pet_testicles_decended, :yes %>
-					<%= f.radio_button :pet_testicles_decended, :no %>
-					<%= f.radio_button :pet_testicles_decended, :not_sure %>
+				  <%= f.radio_button :pet_testicles_descended, :yes %>
+				  <%= f.radio_button :pet_testicles_descended, :no %>
+				  <%= f.radio_button :pet_testicles_descended, :not_sure %>
 				</p>
 				<p class="required">
 				  <%= f.label :testicle_count, "If so, how many?" %><br />
