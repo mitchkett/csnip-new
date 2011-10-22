@@ -54,7 +54,7 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(params[:appointment])
     if @appointment.save
-      AppointmentMailer.appointment_submitted(@appointment).deliver
+      unless @appointment.email.blank? AppointmentMailer.appointment_submitted(@appointment).deliver
       render :layout => 'application'
     else
       render :action => :new, :layout => 'application'
