@@ -4,7 +4,6 @@ gem 'rails', '3.1.1'
 gem 'mysql'
 gem 'devise'
 gem 'will_paginate'
-# gem 'bcrypt-ruby'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
