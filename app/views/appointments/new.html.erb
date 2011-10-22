@@ -173,7 +173,8 @@
 			  <%= f.select :pet_pregnant, [['(please select)', ], ['Yes', :yes], ['No', :no], ['Not sure', :not_sure]] %>
 			</p>
 			<p class="female_only">
-				.... has had any litters...
+				<%= f.label :has_had_litter, "If a 6 months or older female has she had any litters?" %>
+				<%= f.select :has_had_litter, [['(please select)', ], ['Yes', :yes], ['No', :no], ['Not sure', :not_sure]] %>
 			</p>
 			<p class="female_only">
 			  <%= f.label :had_litter_when, "Approximately when was the most recent litter?" %><br />
