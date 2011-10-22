@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(:version => 20111022014300) do
     t.text     "surgeries_explanation"
     t.text     "health_concerns_explanation"
     t.text     "medications_explanation"
-    t.string   "age"
     t.date     "date_of_birth"
     t.string   "owned_for"
     t.string   "vet_name"
