@@ -1,7 +1,28 @@
 <div id="appointments_listing">
   <h2>Appointments</h2>
   <div class="search">
-	   
+	   <%= form_tag search_appointments_path %>
+		    <%= label_tag :last_name %>
+		    <%= text_field_tag :last_name, nil, :size => 15 %>
+
+		    <%= label_tag :county %>
+		    <%= text_field_tag :county, nil, :size => 15 %>
+
+		    <%= label_tag "Zipcode" %>
+		    <%= text_field_tag :postal_code, nil, :size => 10 %>
+
+		    <span class="separator">|</span>
+				<%= select_tag :pet_type, ['Cat', 'Dog'] %>
+		    <span class="separator">|</span>
+
+		    <label>Dates</label>
+		    <%= text_field_tag :from, nil, :size => 11 %>
+
+		    <label>-</label>
+		    <%= text_field_tag :to, nil, :size => 11 %>
+
+		    <%= submit_tag "Search" %>
+		  </form>
 	  </div>
   <div class="search_statistics">
     Search returned <strong><%= number_with_delimiter(@search.count) %></strong> results: 

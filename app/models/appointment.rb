@@ -43,11 +43,7 @@ class Appointment < ActiveRecord::Base
      end
   
   def age
-    if !self.date_of_birth.blank?
-      (Time.now - self.date_of_birth).to_s
-    else
-      "Unknown"
-    end
+    "Unknown"
   end
 
 end
