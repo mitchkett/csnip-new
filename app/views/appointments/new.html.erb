@@ -159,24 +159,27 @@
 			  <%= f.label :medications_explanation, "Any medications? If so, please explain:" %><br />
 			  <%= f.text_field :medications_explanation %>
 			</p>
-			<p class="female">
+			<p class="female_only">
 			  <%= f.label :pet_in_heat, "Is your pet in heat?" %>
 			  <%= f.select :pet_in_heat, [['(please select)', ], ['Yes', :yes], ['No', :no], ['Not sure', :not_sure]] %>
 			</p>
-			<p class="female">
+			<p class="female_only">
 			  <%= f.label :pet_pregnant, "Is your pet pregnant?" %>
 			  <%= f.select :pet_pregnant, [['(please select)', ], ['Yes', :yes], ['No', :no], ['Not sure', :not_sure]] %>
 			</p>
-			<p class="female">
+			<p class="female_only">
+				.... has had any litters...
+			</p>
+			<p class="female_only">
 			  <%= f.label :had_litter_when, "Approximately when was the most recent litter?" %><br />
 			  <%= f.text_field :had_litter_when %><br />
 			  <span class="notes">e.g., 1 year, about 6 months</span>
 			</p>
-			<p class="male required">
+			<p class="male_only required">
 			  <%= f.label :pet_testicles_descended, "Has your male pet's testicles decended?" %>
 			  <%= f.select :pet_testicles_descended, [['(please select)', ], ['Yes', :yes], ['No', :no], ['Not sure', :not_sure]] %>
 			</p>
-			<p class="male required">
+			<p class="male_only required">
 			  <%= f.label :testicle_count, "If so, how many?" %>
 			  <%= f.select :testicle_count, [['(please select)', ], ['One (1)', 1], ['Two (2)', 2]] %>
 			</p>
@@ -192,6 +195,33 @@
   $(function() {
     $("#appointment_phone").mask("(999) 999-9999");
     $("#appointment_alternate_phone").mask("(999) 999-9999");
-    $("#appointment_date_of_birth").datepicker({ dateFormat: 'yyyy-mm-dd'});
+    $("#appointment_date_of_birth").datepicker({ dateFormat: 'yy-mm-dd'});
+    
+    $('#appointment_gender').change(function() {
+      if($(this).val() == "male") {
+		$(".female_only").hide();
+		$(".male_only").show();
+      } else if ($(this).val() == "female") {
+        $(".male_only").hide();
+        $(".female_only").show();
+      }
+      else {
+        $(".female_only").hide();
+        $(".male_only").hide();
+      }
+    }).change();
+    
+    $('#appointment_pet_type').change(function() {
+      if($(this).val() == "cat") {
+		$(".dog_only").hide();
+		$(".cat_only").show();
+      } else if ($(this).val() == "dog") {
+		$(".cat_only").hide();
+		$(".dog_only").show();
+      } else {
+		$(".dog_only").hide();
+		$(".cat_only").hide();
+      }
+    }).change();
   });
 </script>
