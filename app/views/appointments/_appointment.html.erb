@@ -1,6 +1,6 @@
 <h2>Appointment - ID:<%= appointment.id %></h2>
 <div id="admin_nav" style="padding-left: 10px;">
-  <%= link_to '&larr; Back to Appointment Listing', appointments_url %>
+  <%= link_to '<< Back to Appointment Listing', appointments_url %>
 </div>
 <table class="single_record" cellpadding="1" width="100%">
   <tbody>
@@ -48,8 +48,8 @@
       <th>Pet name</th>
       <td><%= appointment.pet_name %></td>
     </tr>
-    <tr
-      <th> Pet type
+    <tr>
+      <th> Pet type</th>
       <td><%= appointment.pet_type.capitalize %></td>
     </tr>
     <tr>
@@ -88,6 +88,28 @@
       <th>Additional information</th>
       <td><%= appointment.comments %></td>
     </tr>
+	<tr>
+		<th>Acquired from?</th>
+		<td><%= appointment.acquired_from %></td>
+	</tr>
+	<% if !(appointment.acquired_from_other_description.blank?)%>
+		<tr>
+			<th>Acquired from other description</th>
+			<td><%= appointment.acquired_from_other_description %>
+		</tr>
+	<% end %>
+	<tr>
+		<th>Owned for how long?</th>
+		<td><%= appointment.owned_for %>
+	</tr>
+	<tr>
+		<th>Where does your pet live?</th>
+		<td><%= appointment.where_pet_lives %></td>
+	</tr>
+	<tr>
+		<th>Is pet tame?</th>
+		<td><%= appointment.is_pet_tame %></td>
+	</tr>
     <tr>
       <th>Is your pet in heat?</th>
       <td><%= appointment.pet_in_heat %></td>
@@ -96,8 +118,12 @@
       <th>Is your pet pregnant?</th>
       <td><%= appointment.pet_pregnant %></td>
     </tr>
+	<tr>
+		<th>Has your pet had a litter?</th>
+		<td><%= appointment.has_had_litter %></td>
+	</tr>
     <tr>
-      <th>Did you pet have a litter? If so, when?</th>
+      <th>When did your pet last have a litter?</th>
       <td><%= appointment.had_litter_when %></td>
     </tr>
     <tr>
@@ -109,17 +135,13 @@
       <td><%= appointment.testicle_count %></td>
     </tr>
     <tr>
-      <th>How did you acquire your pet?</th>
-      <td><%= appointment.testicle_count %></td>
-    </tr>
-    <tr>
-      <th>How long have you owned your pet?</th>
-      <td><%= appointment.owned_for %></td>
-    </tr>
-    <tr>
       <th>Has your pet been vaccinated?</th>
-      <td><%= appointment.pet_vaccinated %></td>
+      <td><%= appointment.pet_vaccinated.humanize %></td>
     </tr>
+	<tr>
+		<th>Has your pet seen a vet?</th>
+		<td><%= appointment.has_pet_seen_vet %></td>
+	</tr>
     <tr>
       <th>Veterinarian's name</th>
       <td><%= appointment.vet_name %></td>
