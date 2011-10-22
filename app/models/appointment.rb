@@ -5,6 +5,7 @@ class Appointment < ActiveRecord::Base
   before_create :set_acquired_from
   
   attr_accessor :acquired_from_type, :acquired_from_other_description
+  attr_reader :age
   
   def set_acquired_from
     if acquired_from_type == 'other'
@@ -13,6 +14,14 @@ class Appointment < ActiveRecord::Base
       self.acquired_from = "none"
     else
       self.acquired_from = acquired_from_type
+    end
+  end
+  
+  def age
+    if !self.date_of_birth.blank?
+      (Time.now - self.date_of_birth).to_s
+    else
+      "Unknown"
     end
   end
 
