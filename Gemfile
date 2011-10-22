@@ -22,9 +22,9 @@ group :development, :test do
   gem 'mysql'
 end
 
-# group :production do
-#   gem 'pg'
-# end
+group :production do
+  gem 'pg'
+end
 
 gem 'jquery-rails'
 
