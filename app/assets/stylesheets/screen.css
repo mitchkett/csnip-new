@@ -176,7 +176,7 @@ body.bp {
     font-weight: bold; }
   body.bp thead th {
     background: #c3d9ff; }
-  body.bp th, body.bp td, body.bp caption {
+  body.bp th, body.bp caption {
     padding: 4px 10px 4px 5px; }
   body.bp tr.even td {
     background: #e5ecf9; }
