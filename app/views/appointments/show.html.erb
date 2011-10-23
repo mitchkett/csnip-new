@@ -2,8 +2,12 @@
 <div class="appointment_buttons">
 	<%- unless @appointment.status.blank? -%>
 	<%- if @appointment.status.upcase == "PENDING" -%>
-		<%= link_to 'Approve', approve_appointment_path(@appointment), {:method => :put} %> | 
-		<%= link_to 'Deny', deny_appointment_path(@appointment), {:method => :put} %>
+		<%= form_tag approve_appointment_path(@appointment) %>
+			<%= submit_tag 'Approve' %>
+		</form>
+		<%= form_tag deny_appointment_path(@appointment) %>
+			<%= submit_tag 'Deny' %>
+		</form>
 	<%- end -%>
 	<%- end -%>
 </div>
