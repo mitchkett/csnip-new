@@ -10,7 +10,19 @@
 			<div id="header">
 				<%= image_tag('logo.png', :style => 'float: left') %>
 			</div>
-			<%= flash_div :error, :warning, :notice %>
+			
+		    <% if flash[:notice] %>
+		      <p style="color:green"><%= flash[:notice] %></p>
+		    <% end %>
+
+		    <% if flash[:error] %>
+		      <p style="color:red"><%= flash[:error] %></p>
+		    <% end %>
+		
+		    <% if flash[:warning] %>
+		      <p style="color:red"><%= flash[:warning] %></p>
+		    <% end %>
+		
 			<%= yield %>
 		</div>
 	</body>
