@@ -3,8 +3,8 @@ CsnipNew::Application.routes.draw do
   resources :appointments do
     get 'search', :on => :collection
     post 'print', :on => :collection
-    post 'approve', :on => :member
-    post 'deny', :on => :member
+    put 'approve', :on => :member
+    put 'deny', :on => :member
   end
   
   root :to => "appointments#index"
