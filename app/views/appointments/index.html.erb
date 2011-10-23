@@ -55,11 +55,12 @@
   <% else %>
     <%= will_paginate @appointments %>
     <%= form_tag print_appointments_path %>
-      <%= submit_tag "Print Selected" %>
+	  <fieldset>
+	 <%= submit_tag "Print Selected" %>	
       <table>
         <thead>
           <tr>
-            <th> &nbsp; </th>
+            <th><input id="check_all" type="checkbox" class="checkall"></th>
             <th> ID </th>
             <th> Client Name </th>
             <th> Phone </th>
@@ -68,7 +69,7 @@
             <th> Pet Sex </th>
             <th> Vaccinated? </th>
             <th> Pregnant? </th>
-						<th> Status </th>
+			<th> Status </th>
             <th> &nbsp; </th>
           </thead>
         <tbody>
@@ -103,9 +104,9 @@
               <td>
                 <%= appointment.pet_pregnant.to_s.humanize %>
               </td>
-							<td>
-								<%= appointment.status.upcase unless appointment.status.blank? %>
-							</td>
+			  <td>
+			    <%= appointment.status.upcase unless appointment.status.blank? %>
+			   </td>
               <td>
                 <%= link_to 'Show', appointment %>
               </td>
@@ -119,13 +120,19 @@
           </tr>
         </tbody>
       </table>
+     </fieldset>
     </form>
-<%- end -%>
+    <%- end -%>
     <%= will_paginate @appointments %>
   </div>
 </div>
 <script type="text/javascript">
   $(function() {
     $(".date_picker").datepicker({ dateFormat: 'yy-mm-dd'});
+  });
+	$(function () {
+		$('.checkall').click(function () {
+			$(this).parents('fieldset:eq(0)').find(':checkbox').attr('checked', this.checked);
+		});
 	});
 </script>
