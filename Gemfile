@@ -3,6 +3,8 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.1'
 gem 'devise'
 gem 'will_paginate'
+gem 'date_validator'
+gem 'jquery-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -25,8 +27,6 @@ end
 group :production do
   gem 'pg'
 end
-
-gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

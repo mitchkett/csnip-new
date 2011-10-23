@@ -119,7 +119,7 @@ class AppointmentsController < ApplicationController
   def deny
     @appointment = Appointment.find(params[:id])
     if @appointment.update_attributes(:status => "DENIED")
-      flash[:notice] = "Appointment #{@appointment.id.to_s} with #{@appointment.client_full_name} has been denied."
+      flash[:warn] = "Appointment #{@appointment.id.to_s} with #{@appointment.client_full_name} has been denied."
       AppointmentMailer.appointment_denied(@appointment).deliver unless @appointment.email.blank?
       redirect_to appointments_path
     else
