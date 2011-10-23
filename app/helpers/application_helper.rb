@@ -23,16 +23,5 @@ module ApplicationHelper
       "#{match[0][0, 3]}-#{match[0][3, 3]}-#{match[0][6, 4]}"
     end
   end
-  
-  def flash_div(*keys)
-    return '' if keys.blank?
-
-    flash_info = keys.collect { |key|
-      content_tag(:div,
-                  h(flash[key]), :id => "flash_#{key}", :class => "#{key} flash") if flash[key]
-    }.join
-
-    flash_info
-  end
 
 end
