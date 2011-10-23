@@ -15,11 +15,11 @@ class Appointment < ActiveRecord::Base
   
   class << self
     def by_last_name(last_name)
-      where("last_name LIKE '%#{last_name}%'")
+      where("last_name LIKE ?", "%#{last_name}%")
     end
     
     def by_county(county)
-      where("county LIKE '%#{county}%'")
+      where("county LIKE ?", "%#{county}%")
     end
     
     def by_zip(postal_code)
