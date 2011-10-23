@@ -45,6 +45,10 @@ class AppointmentsController < ApplicationController
       @search = @search.by_status(params[:status])
     end
     
+    if params.has_key?(:printed)
+      @search = params[:printed] == "1" ? @search.printed : @search.not_printed
+    end
+    
     #@search.pet_type_equals_any = %w[dog cat] unless params[:search] && params[:search][:pet_type_equals_any]
     @appointments = @search.paginate(:page => params[:page], :per_page => 50)
     
@@ -63,6 +67,7 @@ class AppointmentsController < ApplicationController
     search_params[:to] = params[:to] if params.has_key?(:to) && !params[:to].blank?
     search_params[:seen_vet] = Regexp.escape(params[:seen_vet]) if params.has_key?(:seen_vet) && !params[:seen_vet].blank?
     search_params[:status] = params[:status] if params.has_key?(:status) && !params[:status].blank?
+    search_params[:printed] = params[:printed] if params.has_key?(:printed) && !params[:printed].blank?
     respond_to do |format|
       format.html { redirect_to(appointments_path(search_params)) }
       format.js

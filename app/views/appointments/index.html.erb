@@ -17,10 +17,10 @@
 		    <span class="separator">|</span>
 
 		    <label>Dates</label>
-		    <%= text_field_tag :from, params[:from], :size => 11 %>
+		    <%= text_field_tag :from, params[:from], :size => 11, :class => "date_picker" %>
 
 		    <span>-</span>
-		    <%= text_field_tag :to, params[:to], :size => 11 %>
+		    <%= text_field_tag :to, params[:to], :size => 11, :class => "date_picker" %>
 				<br />
 		
 				<%= label_tag "Age" %>
@@ -37,6 +37,10 @@
 				<span class="separator">|</span>
 				<%= label_tag "Status" %>
 				<%= select_tag :status, options_for_select(['', 'PENDING', 'APPROVED', 'DENIED']) %>
+				
+				<span class="separator">|</span>
+				<%= label_tag "Printed?" %>
+				<%= select_tag :printed, options_for_select([['', ''], ['Yes', 1], ['No', 0]]) %>
 
 		    <%= submit_tag "Search" %>
 		  </form>
@@ -120,3 +124,8 @@
     <%= will_paginate @appointments %>
   </div>
 </div>
+<script type="text/javascript">
+  $(function() {
+    $(".date_picker").datepicker({ dateFormat: 'yy-mm-dd'});
+	});
+</script>

@@ -35,7 +35,7 @@ class Appointment < ActiveRecord::Base
     end
     
     def to_date(to)
-      where(["created_at <= ?", to])
+      where(["created_at <= ?", to + 1.day])
     end
     
     def older
@@ -64,6 +64,14 @@ class Appointment < ActiveRecord::Base
     
     def by_status(status)
       where(:status => status)
+    end
+    
+    def printed
+      where("printed_date IS NOT NULL")
+    end
+    
+    def not_printed
+      where("printed_date IS NULL")
     end
   end  
   
