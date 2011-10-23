@@ -121,11 +121,10 @@
 			<p>
 			  <%= f.label :acquired_from_type %>
 			  <%= f.select :acquired_from_type, [['(please select)', nil], ['Stray', :stray], ['Adopted', :adopted], ['Friend', :friend], ['Breeder', :breeder], ['Other', :other]] %>
-			  <br />
-			  <span style="margin-left: 20px">
-			  	<%= f.label :acquired_from_other_description %>
-			    <%= f.text_field :acquired_from_other_description %>
-			  </span>
+			</p>
+			<p class="optional_description">
+			  <%= f.label :acquired_from_other_description, "Where did you acquire your pet from?" %>
+			  <%= f.text_field :acquired_from_other_description %>
 			</p>
 			<p>
 			  <%= f.label :owned_for, "How long have you owned your pet?" %><br />
@@ -239,5 +238,13 @@
         $(".vet_name").hide();
       }
     }).change();
+
+   $('#appointment_acquired_from_type').change(function() {
+     if($(this).val() == "other") {
+	   $('.optional_description').show();
+     } else {
+	   $('.optional_description').hide();
+     }
+   }).change();
   });
 </script>
