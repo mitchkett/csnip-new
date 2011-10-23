@@ -85,17 +85,13 @@
 			  <%= f.select :gender, [['(please select)', nil], ['Male', :male], ['Female', :female], ['Not sure', :not_sure]] %>
 			</p>
 			<p class="dog_only">
-			  <%= f.label :weight, "Approximate weight of your dog" %><br />
+			  <%= f.label :weight, "Approximate weight" %><br />
 			  <%= f.text_field :weight %><br />
 			</p>
-			<p class="dog_only">
+			<p>
 			  <%= f.label :breed %><br />
-			  <%= f.text_field :breed %>
-			</p>
-			<p class="cat_only">
-			  <%= f.label :breed, "Type of hair" %><br />
 			  <%= f.text_field :breed %><br />
-			  <span class="notes">e.g., short hair, medium hair, long hair.</span>
+			  <span class="notes cat_only">e.g., short hair, medium hair, long hair.</span>
 			</p>
 			<p>
 			  <%= f.label :color %><br />
