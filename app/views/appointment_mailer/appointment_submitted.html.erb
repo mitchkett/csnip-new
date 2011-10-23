@@ -7,7 +7,6 @@
     <h1>Thank you for your appointment request, <%= @appointment.first_name %>.</h1>
 		<p>Your appointment request has been received. We will contact you as soon as your request has been reviewed. Please do not re-submit this request.</p>
 		<p>If you have any further questions or concerns, please email us at <a href='mailto:info@csnip.org'>info@csnip.org</a>.</p>
-		<p><%= link_to "Click here if you have another pet to add", new_appointment_path(:appointment => @appointment.person_attributes) %></p>
     <p>Thanks for joining and have a great day!</p>
   </body>
 </html>
