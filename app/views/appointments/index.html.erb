@@ -26,6 +26,13 @@
 				<%= select_tag :age, options_for_select([['', 0], ['6 months & under', 1], ['Over 6 months', 2]]) %>
 				
 				<span class="separator">|</span>
+				<%= label_tag "Pet Vaccined?" %>
+				<%= select_tag :pet_vaccinated, options_for_select([['(please select)', nil], ['Yes, self administered', :yes_self], 
+			  								['Yes, at a veterinarian', :yes_vet], ['No', :no], ['Not sure', :not_sure]]) %>
+			
+				<span class="separator">|</span>
+				<%= label_tag "Seen a vet?" %>
+				<%= select_tag :seen_vet, options_for_select(['', 'Yes', 'No']) %>
 
 		    <%= submit_tag "Search" %>
 		  </form>

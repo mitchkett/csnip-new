@@ -72,5 +72,13 @@ class AppointmentsController < ApplicationController
       redirect_to appointments_path
     end
   end
+  
+  def deny
+    @appointment = Appointment.find(params[:id])
+    if @appointment.update_attributes(:status => "DENIED")
+      flash[:notice] = "Appointment #{@appointment.id.to_s} with #{@appointment.client_full_name} has been denied."
+      redirect_to appointments_path
+    end
+  end
 
 end
