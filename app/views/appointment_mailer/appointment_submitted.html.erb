@@ -4,7 +4,7 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>Thank you for your appointment request, <%= @appointment.first_name %></h1>
+    <h1>Thank you for your appointment request, <%= @appointment.first_name %>.</h1>
 	<p>Providing your information for <%= @appointment.pet_name %> online allows us to devote more of our resources to taking care of your pet.</p>
 	<p>We will call you within 3 to 5 business days for any further information and to schedule an appointment.</p>
 	<%= link_to "Click here if you have another pet to add", new_appointment_path(:appointment => @appointment.person_attributes) %>
