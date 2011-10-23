@@ -547,3 +547,11 @@ form.simple label {
 .search_statistics {
   text-align: right;
   padding-right: 5px; }
+
+.sign_up_box, .login_box {
+	width: 300px;
+	margin: 0px auto;
+	padding: 20px;
+	margin-bottom: 60px;
+	border: 1px solid #000;
+}

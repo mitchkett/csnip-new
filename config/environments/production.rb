@@ -5,7 +5,7 @@ CsnipNew::Application.configure do
   config.cache_classes = true
 
   # Full error reports are disabled and caching is turned on
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
@@ -59,6 +59,7 @@ CsnipNew::Application.configure do
   config.active_support.deprecation = :notify
   
   # email
+  config.action_mailer.default_url_options = { :host => 'csnip-appt.herokuapps.com' }
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
     :port           => '587',

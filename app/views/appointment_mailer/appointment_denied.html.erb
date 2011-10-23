@@ -4,11 +4,10 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>Thank you for your appointment request, <%= @appointment.first_name %></h1>
-	<p>Providing your information for <%= @appointment.pet_name %> online allows us to devote more of our resources to taking care of your pet.</p>
-	
-	<p> ALL THE INFO NEEDED </p>
-	reschedule or more info needed
+    <p>Sorry, we are unable to schedule your request for <%= @appointment.request_date.strftime("%A, %B %d, %Y") %>. We will call you within 3-5 business days to re-schedule.</p>
+
+		<p>Thank you!</p>
+		
 	
   </body>
 </html>

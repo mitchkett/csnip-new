@@ -44,7 +44,6 @@ class UsersController < ApplicationController
     if @user.nil?
       flash[:error] = 'No user found'
       redirect_to :action => 'index'
-      return
     end
   end
 

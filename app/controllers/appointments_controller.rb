@@ -1,58 +1,62 @@
 class AppointmentsController < ApplicationController
-  #before_filter :authenticate_user!, :except => [:new, :create]
+  before_filter :authenticate_user!, :except => [:new, :create]
 
   def index
-    @search = Appointment.order('id DESC')
-    if params.has_key?(:last_name)
-      @search = @search.by_last_name(params[:last_name])
+    if current_user.is_admin?
+      @search = Appointment.order('id DESC')
+      if params.has_key?(:last_name)
+        @search = @search.by_last_name(params[:last_name])
+      end
+    
+      if params.has_key?(:county)
+        @search = @search.by_county(params[:county])
+      end
+    
+      if params.has_key?(:zip)
+        @search = @search.by_zip(params[:zip])
+      end
+    
+      if params.has_key?(:pet_type)
+        @search = @search.by_pet_type(params[:pet_type])
+      end
+    
+      if params.has_key?(:age)
+        @search = params[:age] == "1" ? @search.younger : @search.older
+      end
+    
+      if params.has_key?(:from)
+        from_date = Date.strptime(params[:from], "%Y-%m-%d")
+        @search = @search.from_date(from_date)
+      end
+    
+      if params.has_key?(:to)
+        to_date = Date.strptime(params[:to], "%Y-%m-%d")
+        @search = @search.to_date(to_date)
+      end
+    
+      if params.has_key?(:pet_vaccinated)
+        @search = params[:pet_vaccinated] == "1" ? @search.vaccinated : @search.not_vaccinated
+      end
+    
+      if params.has_key?(:seen_vet)
+        @search = params[:seen_vet] == "1" ? @search.seen_vet : @search.not_seen_vet
+      end
+    
+      if params.has_key?(:status)
+        @search = @search.by_status(params[:status])
+      end
+    
+      if params.has_key?(:printed)
+        @search = params[:printed] == "1" ? @search.printed : @search.not_printed
+      end
+    
+      #@search.pet_type_equals_any = %w[dog cat] unless params[:search] && params[:search][:pet_type_equals_any]
+      @appointments = @search.paginate(:page => params[:page], :per_page => 50)
+    
+      render :layout => 'admin'
+    else
+      redirect_to new_appointment_path
     end
-    
-    if params.has_key?(:county)
-      @search = @search.by_county(params[:county])
-    end
-    
-    if params.has_key?(:zip)
-      @search = @search.by_zip(params[:zip])
-    end
-    
-    if params.has_key?(:pet_type)
-      @search = @search.by_pet_type(params[:pet_type])
-    end
-    
-    if params.has_key?(:age)
-      @search = params[:age] == "1" ? @search.younger : @search.older
-    end
-    
-    if params.has_key?(:from)
-      from_date = Date.strptime(params[:from], "%Y-%m-%d")
-      @search = @search.from_date(from_date)
-    end
-    
-    if params.has_key?(:to)
-      to_date = Date.strptime(params[:to], "%Y-%m-%d")
-      @search = @search.to_date(to_date)
-    end
-    
-    if params.has_key?(:pet_vaccinated)
-      @search = params[:pet_vaccinated] == "1" ? @search.vaccinated : @search.not_vaccinated
-    end
-    
-    if params.has_key?(:seen_vet)
-      @search = params[:seen_vet] == "1" ? @search.seen_vet : @search.not_seen_vet
-    end
-    
-    if params.has_key?(:status)
-      @search = @search.by_status(params[:status])
-    end
-    
-    if params.has_key?(:printed)
-      @search = params[:printed] == "1" ? @search.printed : @search.not_printed
-    end
-    
-    #@search.pet_type_equals_any = %w[dog cat] unless params[:search] && params[:search][:pet_type_equals_any]
-    @appointments = @search.paginate(:page => params[:page], :per_page => 50)
-    
-    render :layout => 'admin'
   end
   
   def search
@@ -107,6 +111,8 @@ class AppointmentsController < ApplicationController
       flash[:notice] = "Appointment #{@appointment.id.to_s} with #{@appointment.client_full_name} has been approved."
       AppointmentMailer.appointment_accepted(@appointment).deliver unless @appointment.email.blank?
       redirect_to appointments_path
+    else
+      render :action => 'show'
     end
   end
   
@@ -116,6 +122,8 @@ class AppointmentsController < ApplicationController
       flash[:notice] = "Appointment #{@appointment.id.to_s} with #{@appointment.client_full_name} has been denied."
       AppointmentMailer.appointment_denied(@appointment).deliver unless @appointment.email.blank?
       redirect_to appointments_path
+    else
+      render :action => 'show'
     end
   end
 

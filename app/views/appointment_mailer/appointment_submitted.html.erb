@@ -5,10 +5,9 @@
   </head>
   <body>
     <h1>Thank you for your appointment request, <%= @appointment.first_name %>.</h1>
-    <h2>Your request appointment date is <%= @appointment.request_date.to_s %>.</h2>
-	<p>Providing your information for <%= @appointment.pet_name %> online allows us to devote more of our resources to taking care of your pet.</p>
-	<p>We will call you within 3 to 5 business days for any further information and to schedule an appointment.</p>
-	<%= link_to "Click here if you have another pet to add", new_appointment_path(:appointment => @appointment.person_attributes) %>
+		<p>Your appointment request has been received. We will contact you as soon as your request has been reviewed. Please do not re-submit this request.</p>
+		<p>If you have any further questions or concerns, please email us at <a href='mailto:info@csnip.org'>info@csnip.org</a>.</p>
+		<p><%= link_to "Click here if you have another pet to add", new_appointment_path(:appointment => @appointment.person_attributes) %></p>
     <p>Thanks for joining and have a great day!</p>
   </body>
 </html>
