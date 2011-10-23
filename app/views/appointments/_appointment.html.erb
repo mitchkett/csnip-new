@@ -111,7 +111,7 @@
 	</tr>
 	<tr>
 		<th>Is pet tame?</th>
-		<td><%= appointment.is_pet_tame %></td>
+		<td><%= appointment.is_pet_tame == true ? "NO" : "yes" %></td>
 	</tr>
     <tr>
       <th>Is your pet in heat?</th>
@@ -143,7 +143,7 @@
     </tr>
 	<tr>
 		<th>Has your pet seen a vet?</th>
-		<td><%= appointment.has_pet_seen_vet %></td>
+		<td><%= appointment.has_pet_seen_vet == 1 ? "no" : "yes" %></td>
 	</tr>
     <tr>
       <th>Veterinarian's name</th>
