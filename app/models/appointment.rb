@@ -109,6 +109,14 @@ class Appointment < ActiveRecord::Base
     "Unknown"
   end
   
+  def birth_date
+    if self.date_of_birth.blank?
+      self.date_of_birth_text
+    else
+      self.date_of_birth
+    end
+  end
+  
   def set_status_to_pending
     self.status = "PENDING"
   end
