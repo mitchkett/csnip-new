@@ -4,20 +4,47 @@ class AppointmentsController < ApplicationController
   def index
     @search = Appointment.order('id DESC')
     if params.has_key?(:last_name)
-      @search = @search.where("last_name LIKE '%#{params[:last_name]}%'")
+      @search = @search.by_last_name(params[:last_name])
     end
     
     if params.has_key?(:county)
-      @search = @search.where("county LIKE '%#{params[:county]}%'")
+      @search = @search.by_county(params[:county])
     end
     
     if params.has_key?(:zip)
-      @search = @search.where("postal_code LIKE '%#{params[:zip]}%'")
+      @search = @search.by_zip(params[:zip])
     end
     
     if params.has_key?(:pet_type)
-      @search = @search.where("pet_type LIKE '%#{params[:pet_type]}%'")
+      @search = @search.by_pet_type(params[:pet_type])
     end
+    
+    if params.has_key?(:age)
+      @search = params[:age] == "1" ? @search.younger : @search.older
+    end
+    
+    if params.has_key?(:from)
+      from_date = Date.strptime(params[:from], "%Y-%m-%d")
+      @search = @search.from_date(from_date)
+    end
+    
+    if params.has_key?(:to)
+      to_date = Date.strptime(params[:to], "%Y-%m-%d")
+      @search = @search.to_date(to_date)
+    end
+    
+    if params.has_key?(:pet_vaccinated)
+      @search = params[:pet_vaccinated] == "1" ? @search.vaccinated : @search.not_vaccinated
+    end
+    
+    if params.has_key?(:seen_vet)
+      @search = params[:seen_vet] == "1" ? @search.seen_vet : @search.not_seen_vet
+    end
+    
+    if params.has_key?(:status)
+      @search = @search.by_status(params[:status])
+    end
+    
     #@search.pet_type_equals_any = %w[dog cat] unless params[:search] && params[:search][:pet_type_equals_any]
     @appointments = @search.paginate(:page => params[:page], :per_page => 50)
     
@@ -30,8 +57,12 @@ class AppointmentsController < ApplicationController
     search_params[:county] = Regexp.escape(params[:county]) if params.has_key?(:county) && !params[:county].blank?
     search_params[:zip] = Regexp.escape(params[:zip]) if params.has_key?(:zip) && !params[:zip].blank?
     search_params[:pet_type] = Regexp.escape(params[:pet_type]) if params.has_key?(:pet_type) && !params[:pet_type].blank?
-    search_params[:from] = Regexp.escape(params[:from]) if params.has_key?(:from) && !params[:from].blank?
-    search_params[:to] = Regexp.escape(params[:to]) if params.has_key?(:to) && !params[:to].blank?
+    search_params[:age] = Regexp.escape(params[:age]) if params.has_key?(:age) && !params[:age].blank?
+    search_params[:pet_vaccinated] = Regexp.escape(params[:pet_vaccinated]) if params.has_key?(:pet_vaccinated) && !params[:pet_vaccinated].blank?
+    search_params[:from] = params[:from] if params.has_key?(:from) && !params[:from].blank?
+    search_params[:to] = params[:to] if params.has_key?(:to) && !params[:to].blank?
+    search_params[:seen_vet] = Regexp.escape(params[:seen_vet]) if params.has_key?(:seen_vet) && !params[:seen_vet].blank?
+    search_params[:status] = params[:status] if params.has_key?(:status) && !params[:status].blank?
     respond_to do |format|
       format.html { redirect_to(appointments_path(search_params)) }
       format.js
