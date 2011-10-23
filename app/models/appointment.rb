@@ -1,11 +1,14 @@
 class Appointment < ActiveRecord::Base
 
   validates :last_name, :first_name, :phone, :best_time_to_contact_client, :street, :city, :postal_code, :county, :presence => true
-  validates :pet_name, :pet_type, :gender, :date_of_birth, :presence => true
+  validates :pet_name, :pet_type, :gender, :presence => true
   
   validates :weight, :presence => { :if => lambda { |appt| appt.pet_type == "dog" } }
+  validates :breed, :presence => { :if => lambda { |appt| appt.pet_type == "dog" } }  
   validates :pet_testicles_descended, :presence => { :if => lambda { |appt| appt.gender == "male" } }
   validates :testicle_count, :presence => { :if => lambda { |appt| appt.gender == "male" && appt.pet_testicles_descended == "yes" } }
+  validates :request_date, :presence => true, :date => { :after => Time.now, :before => Time.now + 1.year }
+  validates :date_of_birth, :presence => true, :date => { :before => Time.now }
   
   before_create :set_acquired_from
   before_create :set_status_to_pending

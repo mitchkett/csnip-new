@@ -77,7 +77,7 @@
 			  <%= f.text_field :pet_name %>
 			</p>
 			<p class="required">
-			  <%= label_tag "Your pet is a" %>
+			  <%= f.label :pet_type, "Your pet is a" %>
 			  <%= f.select :pet_type, [['(please select)', nil], ['Dog', :dog], ['Cat', :cat]] %>
 			</p>
 		   <p class="required">
@@ -88,7 +88,7 @@
 			  <%= f.label :weight, "Approximate weight" %><br />
 			  <%= f.text_field :weight %><br />
 			</p>
-			<p>
+			<p class="required">
 			  <%= f.label :breed %><br />
 			  <%= f.text_field :breed %><br />
 			  <span class="notes cat_only">e.g., short hair, medium hair, long hair.</span>
@@ -201,7 +201,7 @@
   $(function() {
     $("#appointment_phone").mask("(999) 999-9999");
     $("#appointment_alternate_phone").mask("(999) 999-9999");
-    $("#appointment_date_of_birth").datepicker({ dateFormat: 'yy-mm-dd'});
+    $("#appointment_date_of_birth").datepicker({ dateFormat: 'yy-mm-dd', maxDate: 0 });
     $("#appointment_request_date").datepicker({ dateFormat: 'yy-mm-dd', minDate: 0});
     
     $('#appointment_gender').change(function() {
