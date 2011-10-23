@@ -39,7 +39,12 @@
 			</p>
 			<p>
 			  <%= f.label :email %><br />
-			  <%= f.text_field :email %>
+			  <%= f.text_field :email %><br />
+			  <span class="notes">Please provide an email address for updates on this request.</span>
+			</p>
+			<p>
+			  <%= f.label :request_date, "On which day would you like to schedule your appointment?" %><br />
+			  <%= f.text_field :request_date %>
 			</p>
 		</fieldset>
 	</div>
@@ -110,7 +115,7 @@
 			</p>
 			<p>
 			  <%= f.label :comments, "Please list any other information you have:" %><br />
-			  <%= f.text_area :comments, :size => "48x6" %>
+			  <%= f.text_area :comments, :size => "48x5" %>
 			</p>
 		</fieldset>
 	</div>
@@ -154,15 +159,15 @@
 			</p>
 			<p>
 			  <%= f.label :surgeries_explanation, "Any previous surgery, including declawing? If so, please explain:" %><br />
-			  <%= f.text_area :surgeries_explanation, :size => "48x6"  %><br />
+			  <%= f.text_area :surgeries_explanation, :size => "48x5"  %><br />
 			</p>
 			<p>
 			  <%= f.label :health_concerns_explanation, "Any health issues? If so, please explain:" %><br />
-			  <%= f.text_area :health_concerns_explanation, :size => "48x6"  %>
+			  <%= f.text_area :health_concerns_explanation, :size => "48x5"  %>
 			</p>
 			<p>
 			  <%= f.label :medications_explanation, "Any medications? If so, please explain:" %><br />
-			  <%= f.text_field :medications_explanation %>
+			  <%= f.text_area :medications_explanation, :size => "48x5" %>
 			</p>
 			<p class="female_only">
 			  <%= f.label :pet_in_heat, "Is your pet in heat?" %>
@@ -202,6 +207,7 @@
     $("#appointment_phone").mask("(999) 999-9999");
     $("#appointment_alternate_phone").mask("(999) 999-9999");
     $("#appointment_date_of_birth").datepicker({ dateFormat: 'yy-mm-dd'});
+    $("#appointment_request_date").datepicker({ dateFormat: 'yy-mm-dd', minDate: 0});
     
     $('#appointment_gender').change(function() {
       if($(this).val() == "male") {

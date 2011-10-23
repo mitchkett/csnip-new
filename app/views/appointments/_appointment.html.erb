@@ -29,6 +29,9 @@
       <td><%= mail_to(h(appointment.email)) unless appointment.email.blank? %></td>
     </tr>
     <tr>
+	  <th>Requested an appointment on</th>
+	  <td><%= appointment.request_date %></td>
+    <tr>
       <th>Street address</th>
       <td><%= appointment.street %></td>
     </tr>
