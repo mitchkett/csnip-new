@@ -112,14 +112,20 @@ class Appointment < ActiveRecord::Base
      end
   
   def age
-    "Unknown"
+    if self.date_of_birth.blank?
+      "Unknown"
+    else
+      years = Time.now.to_date.year - date_of_birth.year
+      months = Time.now.to_date.month - date_of_birth.month
+      "#{years} year(s), #{months} month(s)"
+    end
   end
   
   def birth_date
     if self.date_of_birth.blank?
       self.date_of_birth_text
     else
-      self.date_of_birth
+      self.date_of_birth.strftime("%m-%d-%Y")
     end
   end
   

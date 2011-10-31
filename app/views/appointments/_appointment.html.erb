@@ -6,7 +6,7 @@
   <tbody>
     <tr>
       <th width="50%">Request created on</th>
-      <td width="50%"><%= appointment.created_at.to_s(:mdytz) %></td>
+      <td width="50%"><%= appointment.created_at.to_formatted_s(:standard) %></td>
     </tr>
     <tr>
       <th>Client name</th>
@@ -30,7 +30,7 @@
     </tr>
     <tr>
 	  <th>Requested an appointment on</th>
-	  <td><%= appointment.request_date %></td>
+	  <td><%= appointment.request_date.strftime("%A, %B %d, %Y") unless appointment.request_date.blank? %></td>
     <tr>
       <th>Street address</th>
       <td><%= appointment.street %></td>
@@ -163,3 +163,4 @@
     </tr>
   </tbody>
 </table>
+<div class="pagebreak">&nbsp;</div>

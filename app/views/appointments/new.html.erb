@@ -44,7 +44,10 @@
 			</p>
 			<p>
 			  <%= f.label :request_date, "On which day would you like to schedule your appointment?" %><br />
-			  <%= f.text_field :request_date %>
+			  <%= f.text_field :request_date %><br />
+			  <span class="notes">Check in time is 8-8:30 a.m. for everyone.</span><br />
+				<span class="notes">If the appointment is for your dog, you will need to pick him/her up at 4 p.m. the <u>SAME</u> day as surgery.</span><br />
+				<span class="notes">If the appointment for your cat, he/she will spend the night after surgery. You will need to pick your cat up the <u>NEXT</u> morning at 7:30 a.m.</span>
 			</p>
 		</fieldset>
 	</div>
@@ -103,7 +106,7 @@
 			</p>
 			<p class="required">
 			  <%= f.label :date_of_birth, "Approximate date of birth" %><br />
-			  <%= f.text_field :date_of_birth %>
+			  <%= f.text_field :date_of_birth %><span class="notes"> (MM-dd-YYYY)</span>
 			</p>
 			<p>
 			  <%= f.check_box :want_rabies_vaccination %>
@@ -201,8 +204,12 @@
   $(function() {
     $("#appointment_phone").mask("(999) 999-9999");
     $("#appointment_alternate_phone").mask("(999) 999-9999");
-    $("#appointment_date_of_birth").datepicker({ dateFormat: 'yy-mm-dd', maxDate: 0 });
-    $("#appointment_request_date").datepicker({ dateFormat: 'yy-mm-dd', minDate: 0});
+    $("#appointment_date_of_birth").mask("99-99-9999");
+    $("#appointment_request_date").datepicker({
+			dateFormat: 'mm-dd-yy', 
+			minDate: 0,
+			beforeShowDay: noWeekendsOrFridays
+		});
     
     $('#appointment_gender').change(function() {
       if($(this).val() == "male") {
@@ -246,5 +253,15 @@
 	   $('.optional_description').hide();
      }
    }).change();
+
+		function noWeekendsOrFridays(date){
+			var day = date.getDay();
+			if (day == 0 || day == 5 || day == 6){
+				return [false];
+			} else {
+				return [true];
+			}
+		}
+
   });
 </script>
