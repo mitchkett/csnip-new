@@ -97,8 +97,7 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(params[:appointment])
-    @appointment.date_of_birth = Date.strptime(params[:appointment][:date_of_birth], "%m-%d-%Y") unless params[:appointment][:date_of_birth].blank?
-    @appointment.request_date = Date.strptime(params[:appointment][:request_date], "%m-%d-%Y") unless params[:appointment][:request_date].blank?
+    @appointment.request_date = Date.strptime(params[:appointment][:request_date], "%Y-%m-%d") unless params[:appointment][:request_date].blank?
     if @appointment.save
       AppointmentMailer.appointment_submitted(@appointment).deliver unless @appointment.email.blank? 
       render :layout => 'application'

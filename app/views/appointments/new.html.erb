@@ -106,7 +106,7 @@
 			</p>
 			<p class="required">
 			  <%= f.label :date_of_birth, "Approximate date of birth" %><br />
-			  <%= f.text_field :date_of_birth %><span class="notes"> (MM-DD-YYYY)</span>
+			  <%= f.date_select :date_of_birth, {:order => [:month, :day, :year], :end_year => Time.now.year - 30, :start_year => Time.now.year} %>
 			</p>
 			<p>
 			  <%= f.check_box :want_rabies_vaccination %>
@@ -206,7 +206,7 @@
     $("#appointment_alternate_phone").mask("(999) 999-9999");
     $("#appointment_date_of_birth").mask("99-99-9999");
     $("#appointment_request_date").datepicker({
-			dateFormat: 'mm-dd-yy', 
+			dateFormat: 'yy-mm-dd', 
 			minDate: 0,
 			beforeShowDay: noWeekendsOrFridays
 		});
