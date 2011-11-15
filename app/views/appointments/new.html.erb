@@ -106,7 +106,7 @@
 			</p>
 			<p class="required">
 			  <%= f.label :date_of_birth, "Approximate date of birth" %><br />
-			  <%= f.date_select :date_of_birth, {:order => [:month, :day, :year], :end_year => Time.now.year - 30, :start_year => Time.now.year} %>
+			  <%= f.date_select :date_of_birth, {:order => [:month, :day, :year], :end_year => Time.now.year - 30, :start_year => Time.now.year, :prompt => true} %>
 			</p>
 			<p>
 			  <%= f.check_box :want_rabies_vaccination %>
