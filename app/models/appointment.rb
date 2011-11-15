@@ -7,13 +7,13 @@ class Appointment < ActiveRecord::Base
   validates :breed, :presence => { :if => lambda { |appt| appt.pet_type == "dog" } }  
   validates :pet_testicles_descended, :presence => { :if => lambda { |appt| appt.gender == "male" } }
   validates :testicle_count, :presence => { :if => lambda { |appt| appt.gender == "male" && appt.pet_testicles_descended == "yes" } }
-  validates :request_date, :presence => true, :date => { :after => Time.now, :before => Time.now + 1.year }
+  validates :request_date, :presence => true, :date => { :after => Time.now, :before => Time.now + 3.weeks }
   validates :date_of_birth, :presence => true, :date => { :before => Time.now }
   
   before_create :set_acquired_from
   before_create :set_status_to_pending
   
-  attr_accessor :acquired_from_type, :acquired_from_other_description
+  attr_accessor :acquired_from_type, :acquired_from_other_description, :requested_appointment_date
   attr_reader :age
   
   class << self
@@ -76,7 +76,15 @@ class Appointment < ActiveRecord::Base
     def not_printed
       where("printed_date IS NULL")
     end
-  end  
+  end
+  
+  def requested_appointment_date=(val)
+    begin
+      self.request_date = Date.strptime(params[:appointment][:request_date], "%Y-%m-%d")
+    rescue
+      self.request_date = nil
+    end
+  end
   
   def set_acquired_from
     if acquired_from_type == 'other'

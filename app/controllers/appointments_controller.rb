@@ -88,7 +88,7 @@ class AppointmentsController < ApplicationController
     @appointments.each do |appt|
       appt.update_attributes(:printed_date => Time.now)
     end
-    render :layout => 'admin'
+    render :layout => 'print'
   end
 
   def new
@@ -97,7 +97,6 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(params[:appointment])
-    @appointment.request_date = Date.strptime(params[:appointment][:request_date], "%Y-%m-%d") unless params[:appointment][:request_date].blank?
     if @appointment.save
       AppointmentMailer.appointment_submitted(@appointment).deliver unless @appointment.email.blank? 
       render :layout => 'application'

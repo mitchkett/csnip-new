@@ -555,3 +555,5 @@ form.simple label {
 	margin-bottom: 60px;
 	border: 1px solid #000;
 }
+
+.pagebreak  { display:block; page-break-before:always; }
