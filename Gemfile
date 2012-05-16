@@ -5,6 +5,7 @@ gem 'devise'
 gem 'will_paginate'
 gem 'date_validator'
 gem 'jquery-rails'
+gem 'mailcatcher', '~> 0.5.6'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
