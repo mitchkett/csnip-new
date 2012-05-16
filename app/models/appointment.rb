@@ -9,6 +9,7 @@ class Appointment < ActiveRecord::Base
   validates :testicle_count, :presence => { :if => lambda { |appt| appt.gender == "male" && appt.pet_testicles_descended == "yes" } }
   validates :request_date, :presence => true, :date => { :after => Time.now, :before => Time.now + 3.weeks }
   validates :date_of_birth, :presence => true, :date => { :before => Time.now }
+  validates :email, :confirmation => true
   
   before_create :set_acquired_from
   before_create :set_status_to_pending

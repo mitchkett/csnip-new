@@ -43,6 +43,11 @@
 			  <span class="notes">Please provide an email address for updates on this request.</span>
 			</p>
 			<p>
+			  <%= f.label :email_confirmation %><br />
+			  <%= f.text_field :email_confirmation %><br />
+			  <span class="notes">Confirm your email address.</span>
+			</p>
+			<p>
 			  <%= f.label :request_date, "On which day would you like to schedule your appointment?" %><br />
 			  <%= f.text_field :request_date %><br />
 			  <span class="notes">Check in time is 8-8:30 a.m. for everyone.</span><br />
