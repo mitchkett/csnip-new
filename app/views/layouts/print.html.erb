@@ -2,8 +2,37 @@
 	<head>
 		<meta http-equiv='content-type' content='text/html; charset=utf-8'></meta>
 		<title>C-SNIP :: Community Spay/Neuter Initiative Partnership</title>
-		<%= stylesheet_link_tag    "application" %>
-		<%= javascript_include_tag "application" %>
+		<style>
+			@media print {
+				div#admin_nav {
+					display:none;
+				}
+				.appointment {
+					page-break-after:always;
+				}
+			}
+			.left {
+				float:left;
+			}
+			.right {
+				float:right;
+			}
+			.clear {
+				clear:both;
+			}
+			* {
+				margin:0.3em;
+			}
+			.contact-info {
+				border-right:1px solid #ddd;
+				text-align:right;
+			}
+			.pet-information, .contact-info {
+				padding:10px;
+				border:1px solid #ccc;
+				background-color:#fafafa;
+			}
+		</style>
 	</head>
 	<body class="bp admin appointment_request">
 		<div id="container">

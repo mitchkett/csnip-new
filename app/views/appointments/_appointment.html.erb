@@ -1,84 +1,52 @@
-<h2>Appointment - ID:<%= appointment.id %></h2>
-<table class="single_record" cellpadding="1" width="100%">
+<h2 class="left"><%= appointment.client_name_last_comma_first %></h2>
+<h2 class="right">Apt #<%= appointment.id %></h2>
+<div class="clear"></div>
+<div class="right">
+	<p class="right">Created on: <%= appointment.created_at.to_formatted_s(:standard) %></p><br />
+	<p class="right">Requested for: <%= appointment.request_date.strftime("%A, %B %d, %Y") unless appointment.request_date.blank? %></p>
+</div>
+<div class="left">
+	<div class="contact-info left">
+		<p><%= appointment.street %></p>
+		<p><%= appointment.city %></p>
+		<p><%= appointment.postal_code %></p>
+		<p><%= appointment.county %></p>
+		<p><%= mail_to(h(appointment.email)) unless appointment.email.blank? %></p>
+		<p><%= formatted_phone(appointment.phone) %></p>
+		<p><%= formatted_phone(appointment.alternate_phone) %></p>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="pet-information">
+	<h3>Pet Information</h3>
+	<div class="left">
+		<p><strong><%= appointment.pet_name %></strong> (<%= appointment.pet_type.capitalize %> / <%= appointment.breed %>)</p>
+		<p><%= appointment.gender.humanize %>, Age: <%= appointment.age %> (DOB: <%= appointment.date_of_birth %>)</p>
+		<% if appointment.weight.present? %>
+			<p><%= appointment.weight %></p>
+		<% end %>
+		<p>Color: <%= appointment.color %></p>
+	</div>
+	<div class="right">
+		<p><strong>Chip implant?</strong>
+			<% if appointment.want_chip_implant? %>
+				Yes
+			<% else %>
+				No
+			<% end %>
+		</p>
+	</div>
+	<div class="clear"></div>
+</div>
+<table class="appointment" cellpadding="1" width="100%">
   <tbody>
-    <tr>
-      <th width="50%">Request created on</th>
-      <td width="50%"><%= appointment.created_at.to_formatted_s(:standard) %></td>
-    </tr>
-    <tr>
-      <th>Client name</th>
-      <td><%= appointment.client_name_last_comma_first %></td>
-    </tr>
-    <tr>
-      <th>Phone</th>
-      <td><%= formatted_phone(appointment.phone) %></td>
-    </tr>
     <tr>
       <th>What is the best time to contact you?</th>
       <td><%= appointment.best_time_to_contact_client %></td>
     </tr>
     <tr>
-      <th>Alternate phone</th>
-      <td><%= formatted_phone(appointment.alternate_phone) %></td>
-    </tr>
-    <tr>
-      <th>Email</th>
-      <td><%= mail_to(h(appointment.email)) unless appointment.email.blank? %></td>
-    </tr>
-    <tr>
-	  <th>Requested an appointment on</th>
-	  <td><%= appointment.request_date.strftime("%A, %B %d, %Y") unless appointment.request_date.blank? %></td>
-    <tr>
-      <th>Street address</th>
-      <td><%= appointment.street %></td>
-    </tr>
-    <tr>
-      <th>City</th>
-      <td><%= appointment.city %></td>
-    </tr>
-    <tr>
-      <th>Zipcode</th>
-      <td><%= appointment.postal_code %></td>
-    </tr>
-    <tr>
-      <th>County</th>
-      <td><%= appointment.county %></td>
-    </tr>
-    <tr>
-      <th>Pet name</th>
-      <td><%= appointment.pet_name %></td>
-    </tr>
-    <tr>
-      <th> Pet type</th>
-      <td><%= appointment.pet_type.capitalize %></td>
-    </tr>
-    <tr>
-      <th>Sex</th>
-      <td><%= appointment.gender.humanize %></td>
-    </tr>
-    <tr>
-      <th>Age</th>
-      <td><%= appointment.age %></td>
-    </tr>
-    <tr>
-      <th>Weight</th>
-      <td><%= appointment.weight %></td>
-    </tr>
-    <tr>
-      <th>Date of birth</th>
-      <td><%= appointment.birth_date %></td>
-    </tr>
-    <tr>
-      <th>Breed</th>
-      <td><%= appointment.breed %></td>
-    </tr>
-    <tr>
-      <th>Color</th>
-      <td><%= appointment.color %></td>
-    </tr>
-    <tr>
-      <th>Would you like a chip implant?</th>
-      <td><%= formatted_boolean(appointment.want_chip_implant?) %></td>
+      <th></th>
+      <td></td>
     </tr>
     <tr>
       <th>Would you like a rabies vaccination?</th>
